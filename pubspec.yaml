@@ -1,0 +1,30 @@
+name: donow
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  drift: ^2.27.0
+  drift_flutter: ^0.2.4
+  flutter:
+    sdk: flutter
+  flutter_secure_storage: ^9.2.4
+  get: ^4.7.2
+  ndk: ^0.4.0
+  nip01: ^0.2.0+2
+  nip19: ^0.1.0+1
+  path_provider: ^2.1.5
+  system_theme: ^3.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  drift_dev: ^2.27.0
+  build_runner: ^2.5.0
+
+flutter:
+  uses-material-design: true
