@@ -24,6 +24,7 @@ class NewTodoPage extends StatelessWidget {
       ),
       body: TextField(
         controller: NewTodoController.to.descriptionController,
+        autofocus: true,
         expands: true,
         minLines: null,
         maxLines: null,
