@@ -22,7 +22,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Web
-        run: flutter build web --base-href /lupine/
+        run: flutter build web --base-href /donow/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -57,9 +57,9 @@ jobs:
 
       - name: Create tar.gz archive with parent folder
         run: |
-          mkdir -p release_archive/Lupine-linux
-          cp -r build/linux/x64/release/bundle/* release_archive/Lupine-linux/
-          tar -czvf Lupine-linux.tar.gz -C release_archive .
+          mkdir -p release_archive/Donow-linux
+          cp -r build/linux/x64/release/bundle/* release_archive/Donow-linux/
+          tar -czvf Donow-linux.tar.gz -C release_archive .
 
       - name: Get version from pubspec.yaml
         id: version
@@ -73,7 +73,7 @@ jobs:
         with:
           tag_name: v${{ steps.version.outputs.version }}
           name: Linux Release v${{ steps.version.outputs.version }}
-          files: Lupine-linux.tar.gz
+          files: Donow-linux.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
