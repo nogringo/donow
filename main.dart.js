@@ -45780,7 +45780,7 @@ l.toString
 h=A
 s=4
 return A.w(A.al0(B.c.hq(i.a.a),l,m),$async$re)
-case 4:k=h.aPg(b,0,713,m,A.a([],t.rj))
+case 4:k=h.aPg(b,0,713,m,A.a([A.a(["encrypted","NIP-44"],t.s)],t.rj))
 n=n.ax
 n===$&&A.b()
 n.VJ(k)
