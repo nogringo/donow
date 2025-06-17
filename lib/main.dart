@@ -24,12 +24,6 @@ void main() async {
     NdkConfig(
       eventVerifier: NoEventVerifier(),
       cache: MemCacheManager(),
-      bootstrapRelays: [
-        "wss://bwcervpt.mooo.com/",
-        "ws://umbrel:4848",
-        // "wss://relay.damus.io",
-        // "wss://relay.primal.net",
-      ],
     ),
   );
   Get.put(ndk);
