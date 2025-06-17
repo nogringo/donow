@@ -1,11 +1,11 @@
 {
-    "name": "donow",
-    "short_name": "donow",
+    "name": "Donow",
+    "short_name": "Donow",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#F81242",
+    "theme_color": "#F81242",
+    "description": "A Nostr native todo list app.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

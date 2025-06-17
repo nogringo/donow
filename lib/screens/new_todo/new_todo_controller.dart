@@ -30,7 +30,7 @@ class NewTodoController extends GetxController {
     final event = Nip01Event(
       pubKey: pubkey,
       kind: 713,
-      tags: [],
+      tags: [["encrypted", "NIP-44"]],
       content: encryptedDescription,
     );
     ndk.broadcast.broadcast(nostrEvent: event);
