@@ -28,7 +28,11 @@ class NewTodoPage extends StatelessWidget {
         expands: true,
         minLines: null,
         maxLines: null,
-        decoration: InputDecoration(border: InputBorder.none, contentPadding: EdgeInsets.all(8)),
+        decoration: InputDecoration(
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.all(8),
+          hintText: "What do you have to do ?",
+        ),
         onChanged: (_) => NewTodoController.to.update(),
       ),
     );
