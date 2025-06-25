@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Donow
+Exec=/usr/local/bin/donow/Donow
+Icon=/usr/local/bin/donow/data/flutter_assets/assets/icon.png
+Comment=A Nostr native todo list app.
+Categories=Utility;
+StartupWMClass=Com.example.donow
