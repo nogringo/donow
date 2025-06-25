@@ -1,4 +1,5 @@
 import 'package:donow/app_routes.dart';
+import 'package:donow/config.dart';
 import 'package:donow/database/database.dart';
 import 'package:donow/middlewares/router_is_logged_in_middleware.dart';
 import 'package:donow/no_event_verifier.dart';
@@ -75,6 +76,7 @@ class MainApp extends StatelessWidget {
         }
 
         return GetMaterialApp(
+          title: appTitle,
           theme: getTheme(),
           darkTheme: getTheme(Brightness.dark),
           themeMode: ThemeMode.system,

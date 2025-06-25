@@ -162,9 +162,9 @@ class Repository extends GetxController {
       return;
     }
 
-    // for (var marker in completedMarkers) {
-    //   ndk.broadcast.broadcastDeletion(eventId: marker.id);
-    // }
+    for (var marker in completedMarkers) {
+      ndk.broadcast.broadcastDeletion(eventId: marker.id);
+    }
   }
 
   void deleteTodo(String eventId) {
