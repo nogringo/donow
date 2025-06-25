@@ -21,7 +21,7 @@ class TodoPage extends StatelessWidget {
             },
             icon: Icon(Icons.logout),
           ),
-          SizedBox(width: 8),
+          SizedBox(width: 24),
         ],
       ),
       body: GetBuilder<Repository>(
