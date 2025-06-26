@@ -107,9 +107,18 @@ class Repository extends GetxController {
   }
 
   Future<String> getTodoDescription(Nip01Event event) async {
-    final decryptedContent = await (database.select(
+    //! unexpected error
+    // final decryptedContent = await (database.select(
+    //   database.decryptedEventItems,
+    // )..where((row) => row.id.isValue(event.id))).getSingleOrNull();
+
+    final queryRes = await (database.select(
       database.decryptedEventItems,
-    )..where((row) => row.id.isValue(event.id))).getSingleOrNull();
+    )..where((row) => row.id.isValue(event.id))).get();
+
+    DecryptedEventItem? decryptedContent;
+    if (queryRes.isNotEmpty) decryptedContent = queryRes.first;
+    //! this code above is used as replacement
 
     if (decryptedContent != null) {
       return jsonDecode(decryptedContent.content)["content"];

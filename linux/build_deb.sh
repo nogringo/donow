@@ -11,4 +11,4 @@ cp linux/donow.desktop build/linux/my_app_deb/usr/share/applications
 cp linux/control build/linux/my_app_deb/DEBIAN
 cp linux/icon.png build/linux/my_app_deb/usr/local/bin/donow/data/flutter_assets/assets/icon.png
 
-dpkg-deb --build build/linux/my_app_deb build/linux/donow.deb
+dpkg-deb --build build/linux/my_app_deb build/linux/Donow.deb
