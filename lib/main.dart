@@ -12,12 +12,18 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:window_manager/window_manager.dart';
 import 'package:ndk/ndk.dart';
 import 'package:system_theme/system_theme.dart';
 import 'package:sembast_cache_manager/sembast_cache_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  
+  if (!kIsWeb && GetPlatform.isDesktop) {
+    await windowManager.ensureInitialized();
+    await windowManager.setTitleBarStyle(TitleBarStyle.hidden);
+  }
 
   await SystemTheme.accentColor.load();
 
@@ -77,7 +83,7 @@ class MainApp extends StatelessWidget {
           );
         }
 
-        return GetMaterialApp(
+        final app = GetMaterialApp(
           title: appTitle,
           theme: getTheme(),
           darkTheme: getTheme(Brightness.dark),
@@ -96,6 +102,15 @@ class MainApp extends StatelessWidget {
             ),
           ],
         );
+        
+        if (!kIsWeb && GetPlatform.isDesktop) {
+          return Directionality(
+            textDirection: TextDirection.ltr,
+            child: DragToResizeArea(child: app),
+          );
+        }
+        
+        return app;
       },
     );
   }

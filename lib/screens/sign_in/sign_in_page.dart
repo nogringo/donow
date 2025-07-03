@@ -1,11 +1,13 @@
 import 'package:donow/app_routes.dart';
 import 'package:donow/repository.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ndk/ndk.dart';
 import 'package:nip01/nip01.dart';
 import 'package:nip19/nip19.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:window_manager/window_manager.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -13,7 +15,23 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: DragToMoveArea(
+          child: AppBar(
+            actions: [
+              if (!kIsWeb && GetPlatform.isDesktop)
+                SizedBox(
+                  width: 154,
+                  child: WindowCaption(
+                    brightness: Theme.of(context).brightness,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
       body: Align(
         alignment: Alignment.topCenter,
         child: ConstrainedBox(

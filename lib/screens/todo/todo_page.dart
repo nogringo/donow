@@ -1,8 +1,10 @@
 import 'package:donow/app_routes.dart';
 import 'package:donow/models/todo.dart';
 import 'package:donow/repository.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:window_manager/window_manager.dart';
 
 enum MenuActions { delete }
 
@@ -12,17 +14,30 @@ class TodoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Donow"),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Repository.to.logOut();
-            },
-            icon: Icon(Icons.logout),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: DragToMoveArea(
+          child: AppBar(
+            title: Text("Donow"),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Repository.to.logOut();
+                },
+                icon: Icon(Icons.logout),
+              ),
+              SizedBox(width: 8),
+              if (!kIsWeb && GetPlatform.isDesktop)
+                SizedBox(
+                  width: 154,
+                  child: WindowCaption(
+                    brightness: Theme.of(context).brightness,
+                    backgroundColor: Theme.of(context).colorScheme.surface,
+                  ),
+                ),
+            ],
           ),
-          SizedBox(width: 24),
-        ],
+        ),
       ),
       body: GetBuilder<Repository>(
         builder: (c) {
