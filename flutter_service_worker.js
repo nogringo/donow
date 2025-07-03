@@ -32,8 +32,8 @@ const RESOURCES = {"drift_worker.dart.js": "ae1f716f0e8e90b0a566f82c6ffa3bc2",
 "icons/icon-512-maskable.png": "b5d3553f9ee6923fd7031769f45d7216",
 "icons/icon-192-maskable.png": "8096b186f026fe3f0497a558f8b1bc7f",
 "icons/icon-512.png": "4c2ca4662ffff5687b3eac562c1eb1d4",
-"flutter_bootstrap.js": "075d5db5dc31dd1be6f9de368af200e7",
-"version.json": "62d52b33687fd1a84d78297d7a074019"};
+"flutter_bootstrap.js": "335a56f34cdd0f0944d9d2d95a920694",
+"version.json": "3e967674b9823798a7cb97c5b0104e59"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
