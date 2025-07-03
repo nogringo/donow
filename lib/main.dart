@@ -1,6 +1,7 @@
 import 'package:donow/app_routes.dart';
 import 'package:donow/config.dart';
 import 'package:donow/database/database.dart';
+import 'package:donow/get_database.dart';
 import 'package:donow/middlewares/router_is_logged_in_middleware.dart';
 import 'package:donow/no_event_verifier.dart';
 import 'package:donow/repository.dart';
@@ -13,6 +14,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ndk/ndk.dart';
 import 'package:system_theme/system_theme.dart';
+import 'package:sembast_cache_manager/sembast_cache_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +26,7 @@ void main() async {
   final ndk = Ndk(
     NdkConfig(
       eventVerifier: NoEventVerifier(),
-      cache: MemCacheManager(),
+      cache: SembastCacheManager(await getDatabase()),
     ),
   );
   Get.put(ndk);

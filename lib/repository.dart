@@ -41,8 +41,10 @@ class Repository extends GetxController {
 
     userSub = ndk.requests.subscription(
       filters: [
-        Filter(kinds: [5, 713, 714], authors: [ndk.accounts.getPublicKey()!]),
+        Filter(kinds: [5, 713, 714], authors: [pubkey]),
       ],
+      cacheRead: true,
+      cacheWrite: true,
     );
 
     await for (final event in userSub!.stream) {
