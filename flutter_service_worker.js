@@ -16,7 +16,7 @@ const RESOURCES = {"drift_worker.dart.js": "ae1f716f0e8e90b0a566f82c6ffa3bc2",
 "favicon.ico": "3ef1ed1412511c26246d8a600d43ce3f",
 "sqlite3.wasm": "19f93db1ac9fb159284ad0a80bfa86f8",
 "manifest.json": "b7c1e8af08cd4f8f22148ce2de387ba2",
-"main.dart.js": "343386dd7039a5826b8cc7c0466fb461",
+"main.dart.js": "fe83e555192d4572dec161a4dec82efa",
 "flutter.js": "83d881c1dbb6d6bcd6b42e274605b69c",
 "index.html": "f7cc8dbfaa3b2216c1abae0b50498737",
 "/": "f7cc8dbfaa3b2216c1abae0b50498737",
@@ -32,7 +32,7 @@ const RESOURCES = {"drift_worker.dart.js": "ae1f716f0e8e90b0a566f82c6ffa3bc2",
 "icons/icon-512-maskable.png": "b5d3553f9ee6923fd7031769f45d7216",
 "icons/icon-192-maskable.png": "8096b186f026fe3f0497a558f8b1bc7f",
 "icons/icon-512.png": "4c2ca4662ffff5687b3eac562c1eb1d4",
-"flutter_bootstrap.js": "2b3809e86dae902116ec99255c9b8b33",
+"flutter_bootstrap.js": "a73c1f3b98dafffbf0109c202b760f75",
 "version.json": "3e967674b9823798a7cb97c5b0104e59"};
 // The application shell files that are downloaded before a service worker can
 // start.
