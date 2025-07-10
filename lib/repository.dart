@@ -103,7 +103,14 @@ class Repository extends GetxController {
       );
     }
 
-    result.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+    result.sort((a, b) {
+      // First sort by completion status (incomplete first)
+      if (a.isCompleted != b.isCompleted) {
+        return a.isCompleted ? 1 : -1;
+      }
+      // Then sort by creation date (newest first)
+      return b.createdAt.compareTo(a.createdAt);
+    });
 
     return result;
   }
