@@ -8,6 +8,8 @@ import 'package:nip01/nip01.dart';
 import 'package:nip19/nip19.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:nip07_event_signer/nip07_event_signer.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -35,15 +37,16 @@ class SignInPage extends StatelessWidget {
       body: Align(
         alignment: Alignment.topCenter,
         child: ConstrainedBox(
-          constraints: BoxConstraints(
-            maxWidth: 350
-          ),
+          constraints: BoxConstraints(maxWidth: 350),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text("Donow sign in", style: Theme.of(context).textTheme.displaySmall,),
+                Text(
+                  "Donow sign in",
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
                 TextField(
                   decoration: InputDecoration(labelText: "Nsec"),
                   onChanged: (nsec) async {
@@ -53,24 +56,88 @@ class SignInPage extends StatelessWidget {
                     } catch (e) {
                       return;
                     }
-                    
+
                     Get.find<Ndk>().accounts.loginPrivateKey(
                       pubkey: keyPair.publicKey,
                       privkey: keyPair.privateKey,
                     );
-                
-                    await FlutterSecureStorage().write(key: "privkey", value: keyPair.privateKey);
+
+                    await FlutterSecureStorage().write(
+                      key: "loginWith",
+                      value: "nsec",
+                    );
+
+                    await FlutterSecureStorage().write(
+                      key: "privkey",
+                      value: keyPair.privateKey,
+                    );
 
                     Repository.to.listenTodo();
-                
+
                     Get.offNamed(AppRoutes.todo);
                   },
                 ),
+                if (kIsWeb) SizedBox(height: 16),
+                if (kIsWeb)
+                  Center(
+                    child: Opacity(
+                      opacity: 0.8,
+                      child: Text(
+                        "Or",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                if (kIsWeb) SizedBox(height: 16),
+                if (kIsWeb) ExtensionSignInButton(),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+}
+
+class ExtensionSignInButton extends StatelessWidget {
+  const ExtensionSignInButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final nip07Signer = Nip07EventSigner();
+
+    final nip07CanSign = nip07Signer.canSign();
+
+    return FilledButton.icon(
+      onPressed: () async {
+        if (!nip07CanSign) {
+          await launchUrl(
+            Uri.parse(
+              'https://chromewebstore.google.com/detail/nos2x/kpgefcfmnafjgpblomihpgmejjdanjjp',
+            ),
+          );
+          return;
+        }
+
+        try {
+          await nip07Signer.getPublicKeyAsync();
+        } catch (e) {
+          return;
+        }
+
+        Get.find<Ndk>().accounts.loginExternalSigner(signer: nip07Signer);
+
+        await FlutterSecureStorage().write(
+          key: "loginWith",
+          value: "extension",
+        );
+
+        Repository.to.listenTodo();
+
+        Get.offNamed(AppRoutes.todo);
+      },
+      label: Text(nip07CanSign ? "Extension login" : "Install extension"),
+      icon: Icon(Icons.extension_outlined),
     );
   }
 }

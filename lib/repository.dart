@@ -6,8 +6,8 @@ import 'package:donow/models/todo.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:ndk/ndk.dart';
-import 'package:ndk/shared/nips/nip44/nip44.dart';
 import 'package:nip01/nip01.dart';
+import 'package:nip07_event_signer/nip07_event_signer.dart';
 
 class Repository extends GetxController {
   static Repository get to => Get.find();
@@ -22,16 +22,26 @@ class Repository extends GetxController {
   AppDatabase get database => Get.find<AppDatabase>();
 
   Future<void> loadApp() async {
-    final privkey = (await FlutterSecureStorage().read(key: "privkey"));
+    final loginWith = await FlutterSecureStorage().read(key: "loginWith");
 
-    if (privkey == null) return;
+    if (loginWith == null) return;
 
-    final keyPair = KeyPair.fromPrivateKey(privateKey: privkey);
+    if (loginWith == "extension") {
+      final nip07Signer = Nip07EventSigner();
+      await nip07Signer.getPublicKeyAsync();
+      ndk.accounts.loginExternalSigner(signer: nip07Signer);
+    } else if (loginWith == "nsec") {
+      final privkey = await FlutterSecureStorage().read(key: "privkey");
 
-    ndk.accounts.loginPrivateKey(
-      pubkey: keyPair.publicKey,
-      privkey: keyPair.privateKey,
-    );
+      if (privkey == null) return;
+
+      final keyPair = KeyPair.fromPrivateKey(privateKey: privkey);
+
+      ndk.accounts.loginPrivateKey(
+        pubkey: keyPair.publicKey,
+        privkey: keyPair.privateKey,
+      );
+    }
 
     listenTodo();
   }
@@ -133,18 +143,17 @@ class Repository extends GetxController {
       return jsonDecode(decryptedContent.content)["content"];
     }
 
-    final description = await Nip44.decryptMessage(
-      event.content,
-      (await FlutterSecureStorage().read(key: "privkey"))!,
-      pubkey,
-    );
+    final description = await ndk.accounts
+        .getLoggedAccount()!
+        .signer
+        .decryptNip44(ciphertext: event.content, senderPubKey: pubkey);
 
     await database
         .into(database.decryptedEventItems)
         .insert(
           DecryptedEventItemsCompanion.insert(
             id: event.id,
-            content: jsonEncode({"content": description}),
+            content: jsonEncode({"content": description!}),
           ),
         );
 
@@ -203,6 +212,7 @@ class Repository extends GetxController {
     stopListenTodo();
 
     await FlutterSecureStorage().delete(key: "privkey");
+    await FlutterSecureStorage().delete(key: "loginWith");
     ndk.accounts.logout();
     todoEvents.clear();
     deletedEventIds.clear();
