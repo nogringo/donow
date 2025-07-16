@@ -27,7 +27,7 @@ class SignInPage extends StatelessWidget {
                   width: 154,
                   child: WindowCaption(
                     brightness: Theme.of(context).brightness,
-                    backgroundColor: Theme.of(context).colorScheme.surface,
+                    backgroundColor: Colors.transparent,
                   ),
                 ),
             ],
