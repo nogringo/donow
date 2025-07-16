@@ -47,6 +47,7 @@ class TodoPage extends StatelessWidget {
               if (!snapshot.hasData) return Container();
 
               return ListView.builder(
+                padding: EdgeInsets.only(bottom: 100),
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
                   final todo = snapshot.data![index];
