@@ -1,0 +1,12 @@
+{
+    "@@locale": "fr",
+    "appTitle": "Donow",
+    "signInTitle": "Connexion à Donow",
+    "nsecLabel": "Nsec",
+    "or": "Ou",
+    "extensionLogin": "Connexion par extension",
+    "installExtension": "Installer l'extension",
+    "create": "Créer",
+    "whatToDo": "Qu'avez-vous à faire ?",
+    "delete": "Supprimer"
+}

@@ -1,0 +1,12 @@
+{
+    "@@locale": "es",
+    "appTitle": "Donow",
+    "signInTitle": "Iniciar sesión en Donow",
+    "nsecLabel": "Nsec",
+    "or": "O",
+    "extensionLogin": "Iniciar sesión con extensión",
+    "installExtension": "Instalar extensión",
+    "create": "Crear",
+    "whatToDo": "¿Qué tienes que hacer?",
+    "delete": "Eliminar"
+}

@@ -10,6 +10,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:nip07_event_signer/nip07_event_signer.dart';
+import 'package:donow/l10n/app_localizations.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -44,11 +45,11 @@ class SignInPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  "Donow sign in",
+                  AppLocalizations.of(context)!.signInTitle,
                   style: Theme.of(context).textTheme.displaySmall,
                 ),
                 TextField(
-                  decoration: InputDecoration(labelText: "Nsec"),
+                  decoration: InputDecoration(labelText: AppLocalizations.of(context)!.nsecLabel),
                   onChanged: (nsec) async {
                     KeyPair? keyPair;
                     try {
@@ -83,7 +84,7 @@ class SignInPage extends StatelessWidget {
                     child: Opacity(
                       opacity: 0.8,
                       child: Text(
-                        "Or",
+                        AppLocalizations.of(context)!.or,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -136,7 +137,7 @@ class ExtensionSignInButton extends StatelessWidget {
 
         Get.offNamed(AppRoutes.todo);
       },
-      label: Text(nip07CanSign ? "Extension login" : "Install extension"),
+      label: Text(nip07CanSign ? AppLocalizations.of(context)!.extensionLogin : AppLocalizations.of(context)!.installExtension),
       icon: Icon(Icons.extension_outlined),
     );
   }

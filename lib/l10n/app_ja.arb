@@ -1,0 +1,12 @@
+{
+    "@@locale": "ja",
+    "appTitle": "Donow",
+    "signInTitle": "Donow サインイン",
+    "nsecLabel": "Nsec",
+    "or": "または",
+    "extensionLogin": "拡張機能でログイン",
+    "installExtension": "拡張機能をインストール",
+    "create": "作成",
+    "whatToDo": "何をしなければなりませんか？",
+    "delete": "削除"
+}

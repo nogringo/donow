@@ -16,10 +16,12 @@ import 'package:window_manager/window_manager.dart';
 import 'package:ndk/ndk.dart';
 import 'package:system_theme/system_theme.dart';
 import 'package:sembast_cache_manager/sembast_cache_manager.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   if (!kIsWeb && GetPlatform.isDesktop) {
     await windowManager.ensureInitialized();
     await windowManager.setTitleBarStyle(TitleBarStyle.hidden);
@@ -88,6 +90,18 @@ class MainApp extends StatelessWidget {
           theme: getTheme(),
           darkTheme: getTheme(Brightness.dark),
           themeMode: ThemeMode.system,
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: [
+            Locale('en'),
+            Locale('es'),
+            Locale('fr'),
+            Locale('ja'),
+          ],
           getPages: [
             GetPage(
               name: AppRoutes.todo,
@@ -102,14 +116,14 @@ class MainApp extends StatelessWidget {
             ),
           ],
         );
-        
+
         if (!kIsWeb && GetPlatform.isDesktop) {
           return Directionality(
             textDirection: TextDirection.ltr,
             child: DragToResizeArea(child: app),
           );
         }
-        
+
         return app;
       },
     );

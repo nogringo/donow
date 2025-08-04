@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:donow/l10n/app_localizations.dart';
 
 class NewTodoPage extends StatelessWidget {
   const NewTodoPage({super.key});
@@ -20,7 +21,7 @@ class NewTodoPage extends StatelessWidget {
                 builder: (c) {
                   return FilledButton(
                     onPressed: c.canCreateTodo ? c.createTodo : null,
-                    child: Text("Create"),
+                    child: Text(AppLocalizations.of(context)!.create),
                   );
                 },
               ),
@@ -46,7 +47,7 @@ class NewTodoPage extends StatelessWidget {
         decoration: InputDecoration(
           border: InputBorder.none,
           contentPadding: EdgeInsets.all(8),
-          hintText: "What do you have to do ?",
+          hintText: AppLocalizations.of(context)!.whatToDo,
         ),
         onChanged: (_) => NewTodoController.to.update(),
       ),

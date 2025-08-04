@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:donow/l10n/app_localizations.dart';
 
 enum MenuActions { delete }
 
@@ -18,7 +19,7 @@ class TodoPage extends StatelessWidget {
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: DragToMoveArea(
           child: AppBar(
-            title: Text("Donow"),
+            title: Text(AppLocalizations.of(context)!.appTitle),
             actions: [
               IconButton(
                 onPressed: () {
@@ -60,7 +61,7 @@ class TodoPage extends StatelessWidget {
                             padding: const EdgeInsets.only(bottom: 100),
                             child: ListTile(
                               leading: Icon(Icons.delete_outlined),
-                              title: Text("Delete"),
+                              title: Text(AppLocalizations.of(context)!.delete),
                               onTap: () {
                                 Repository.to.deleteTodo(todo.eventId);
                                 Get.back();
