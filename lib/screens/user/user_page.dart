@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nostr_widgets/nostr_widgets.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:web/web.dart' as web;
 
 class UserPage extends StatelessWidget {
   const UserPage({super.key});
@@ -34,14 +36,59 @@ class UserPage extends StatelessWidget {
         alignment: Alignment.topCenter,
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 600),
-          child: NUserProfile(
-            ndk: Repository.to.ndk,
-            onLogout: () {
-              Get.offAllNamed(AppRoutes.signIn);
-            },
+          child: Column(
+            children: [
+              NUserProfile(
+                ndk: Repository.to.ndk,
+                onLogout: () {
+                  Get.offAllNamed(AppRoutes.signIn);
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 64),
+                child: UpdateView(),
+              ),
+              SizedBox(height: 100),
+            ],
           ),
         ),
       ),
     );
+  }
+}
+
+class UpdateView extends StatelessWidget {
+  const UpdateView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      if (!Repository.to.hasUpdate.value) return Container();
+
+      return Card(
+        margin: EdgeInsets.all(0),
+        elevation: 0,
+        child: ListTile(
+          title: Text("Update available"),
+          trailing: OutlinedButton.icon(
+            onPressed: () async {
+              if (kIsWeb) {
+                web.window.location.reload();
+                return;
+              }
+
+              final url = Uri.parse(
+                'https://github.com/nogringo/donow/releases/latest',
+              );
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              }
+            },
+            label: Text(kIsWeb ? "Reload" : "Download"),
+            icon: Icon(kIsWeb ? Icons.refresh : Icons.vertical_align_bottom),
+          ),
+        ),
+      );
+    });
   }
 }

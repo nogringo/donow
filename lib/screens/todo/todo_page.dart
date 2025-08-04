@@ -1,6 +1,7 @@
 import 'package:donow/app_routes.dart';
 import 'package:donow/models/todo.dart';
 import 'package:donow/repository.dart';
+import 'package:donow/widgets/update_indicator_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,7 @@ class TodoPage extends StatelessWidget {
           child: AppBar(
             title: Text(AppLocalizations.of(context)!.appTitle),
             actions: [
+              UpdateIndicatorView(),
               GestureDetector(onTap: () {
                 Get.toNamed(AppRoutes.user);
               },child: NPicture(ndk: Repository.to.ndk)),

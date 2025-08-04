@@ -3,11 +3,10 @@ import 'dart:convert';
 import 'package:donow/app_routes.dart';
 import 'package:donow/database/database.dart';
 import 'package:donow/models/todo.dart';
+import 'package:donow/services/update_checker.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:ndk/ndk.dart';
-import 'package:nip01/nip01.dart';
-import 'package:nip07_event_signer/nip07_event_signer.dart';
 
 class Repository extends GetxController {
   static Repository get to => Get.find();
@@ -16,34 +15,23 @@ class Repository extends GetxController {
 
   List<String> deletedEventIds = [];
   List<Nip01Event> todoEvents = [];
+  
+  RxBool hasUpdate = true.obs;
 
   Ndk get ndk => Get.find<Ndk>();
   String get pubkey => ndk.accounts.getPublicKey()!;
   AppDatabase get database => Get.find<AppDatabase>();
 
   Future<void> loadApp() async {
-    final loginWith = await FlutterSecureStorage().read(key: "loginWith");
-
-    if (loginWith == null) return;
-
-    if (loginWith == "extension") {
-      final nip07Signer = Nip07EventSigner();
-      await nip07Signer.getPublicKeyAsync();
-      ndk.accounts.loginExternalSigner(signer: nip07Signer);
-    } else if (loginWith == "nsec") {
-      final privkey = await FlutterSecureStorage().read(key: "privkey");
-
-      if (privkey == null) return;
-
-      final keyPair = KeyPair.fromPrivateKey(privateKey: privkey);
-
-      ndk.accounts.loginPrivateKey(
-        pubkey: keyPair.publicKey,
-        privkey: keyPair.privateKey,
-      );
-    }
-
     listenTodo();
+    // checkForUpdate();
+  }
+  
+  Future<void> checkForUpdate() async {
+    final updateInfo = await UpdateChecker.checkForUpdate();
+    if (updateInfo != null) {
+      hasUpdate.value = updateInfo.hasUpdate;
+    }
   }
 
   void listenTodo() async {

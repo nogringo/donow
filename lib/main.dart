@@ -13,6 +13,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:nostr_widgets/functions/functions.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:ndk/ndk.dart';
 import 'package:system_theme/system_theme.dart';
@@ -40,6 +41,8 @@ void main() async {
     ),
   );
   Get.put(ndk);
+
+  await nRestoreAccounts(ndk);
 
   final repository = Repository();
   Get.put(repository);
