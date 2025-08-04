@@ -155,6 +155,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Delete'**
   String get delete;
+
+  /// User profile page title
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// Text shown when an update is available
+  ///
+  /// In en, this message translates to:
+  /// **'Update available'**
+  String get updateAvailable;
+
+  /// Text shown for web users to reload the page
+  ///
+  /// In en, this message translates to:
+  /// **'Reload this page'**
+  String get reloadThisPage;
+
+  /// Button text for downloading an update
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get download;
 }
 
 class _AppLocalizationsDelegate

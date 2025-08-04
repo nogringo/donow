@@ -111,11 +111,11 @@ class TodoPage extends StatelessWidget {
         globalPosition.dy + 1,
       ),
       items: <PopupMenuEntry<MenuActions>>[
-        const PopupMenuItem<MenuActions>(
+        PopupMenuItem<MenuActions>(
           value: MenuActions.delete,
           child: ListTile(
             leading: Icon(Icons.delete_outlined),
-            title: Text("Delete"),
+            title: Text(AppLocalizations.of(context)!.delete),
           ),
         ),
       ],

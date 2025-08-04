@@ -1,4 +1,5 @@
 import 'package:donow/app_routes.dart';
+import 'package:donow/l10n/app_localizations.dart';
 import 'package:donow/repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:nostr_widgets/nostr_widgets.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:web/web.dart' as web;
 
 class UserPage extends StatelessWidget {
   const UserPage({super.key});
@@ -18,7 +18,7 @@ class UserPage extends StatelessWidget {
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: DragToMoveArea(
           child: AppBar(
-            title: Text('Profile'),
+            title: Text(AppLocalizations.of(context)!.profile),
             actions: [
               if (!kIsWeb && GetPlatform.isDesktop)
                 SizedBox(
@@ -69,24 +69,21 @@ class UpdateView extends StatelessWidget {
         margin: EdgeInsets.all(0),
         elevation: 0,
         child: ListTile(
-          title: Text("Update available"),
-          trailing: OutlinedButton.icon(
-            onPressed: () async {
-              if (kIsWeb) {
-                web.window.location.reload();
-                return;
-              }
-
-              final url = Uri.parse(
-                'https://github.com/nogringo/donow/releases/latest',
-              );
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url);
-              }
-            },
-            label: Text(kIsWeb ? "Reload" : "Download"),
-            icon: Icon(kIsWeb ? Icons.refresh : Icons.vertical_align_bottom),
-          ),
+          title: Text(AppLocalizations.of(context)!.updateAvailable),
+          trailing: kIsWeb
+              ? Text(AppLocalizations.of(context)!.reloadThisPage)
+              : OutlinedButton.icon(
+                  onPressed: () async {
+                    final url = Uri.parse(
+                      'https://github.com/nogringo/donow/releases/latest',
+                    );
+                    if (await canLaunchUrl(url)) {
+                      await launchUrl(url);
+                    }
+                  },
+                  label: Text(AppLocalizations.of(context)!.download),
+                  icon: Icon(Icons.vertical_align_bottom),
+                ),
         ),
       );
     });

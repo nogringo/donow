@@ -34,4 +34,16 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get delete => '削除';
+
+  @override
+  String get profile => 'プロフィール';
+
+  @override
+  String get updateAvailable => 'アップデート利用可能';
+
+  @override
+  String get reloadThisPage => 'このページを再読み込み';
+
+  @override
+  String get download => 'ダウンロード';
 }

@@ -8,5 +8,9 @@
     "installExtension": "Installer l'extension",
     "create": "Créer",
     "whatToDo": "Qu'avez-vous à faire ?",
-    "delete": "Supprimer"
+    "delete": "Supprimer",
+    "profile": "Profil",
+    "updateAvailable": "Mise à jour disponible",
+    "reloadThisPage": "Recharger cette page",
+    "download": "Télécharger"
 }

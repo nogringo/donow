@@ -8,5 +8,9 @@
     "installExtension": "拡張機能をインストール",
     "create": "作成",
     "whatToDo": "何をしなければなりませんか？",
-    "delete": "削除"
+    "delete": "削除",
+    "profile": "プロフィール",
+    "updateAvailable": "アップデート利用可能",
+    "reloadThisPage": "このページを再読み込み",
+    "download": "ダウンロード"
 }

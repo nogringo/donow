@@ -34,4 +34,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get delete => 'Delete';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get updateAvailable => 'Update available';
+
+  @override
+  String get reloadThisPage => 'Reload this page';
+
+  @override
+  String get download => 'Download';
 }

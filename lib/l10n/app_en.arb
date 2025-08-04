@@ -35,5 +35,21 @@
     "delete": "Delete",
     "@delete": {
         "description": "Button text for deleting a todo"
+    },
+    "profile": "Profile",
+    "@profile": {
+        "description": "User profile page title"
+    },
+    "updateAvailable": "Update available",
+    "@updateAvailable": {
+        "description": "Text shown when an update is available"
+    },
+    "reloadThisPage": "Reload this page",
+    "@reloadThisPage": {
+        "description": "Text shown for web users to reload the page"
+    },
+    "download": "Download",
+    "@download": {
+        "description": "Button text for downloading an update"
     }
 }

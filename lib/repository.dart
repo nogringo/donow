@@ -16,7 +16,7 @@ class Repository extends GetxController {
   List<String> deletedEventIds = [];
   List<Nip01Event> todoEvents = [];
   
-  RxBool hasUpdate = true.obs;
+  RxBool hasUpdate = false.obs;
 
   Ndk get ndk => Get.find<Ndk>();
   String get pubkey => ndk.accounts.getPublicKey()!;
@@ -24,7 +24,7 @@ class Repository extends GetxController {
 
   Future<void> loadApp() async {
     listenTodo();
-    // checkForUpdate();
+    checkForUpdate();
   }
   
   Future<void> checkForUpdate() async {
