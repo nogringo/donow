@@ -5,10 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nostr_widgets/nostr_widgets.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:donow/l10n/app_localizations.dart';
 
-class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+class UserPage extends StatelessWidget {
+  const UserPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +16,7 @@ class SignInPage extends StatelessWidget {
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: DragToMoveArea(
           child: AppBar(
+            title: Text('Profile'),
             actions: [
               if (!kIsWeb && GetPlatform.isDesktop)
                 SizedBox(
@@ -33,25 +33,12 @@ class SignInPage extends StatelessWidget {
       body: Align(
         alignment: Alignment.topCenter,
         child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 350),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.signInTitle,
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
-                NLogin(
-                  ndk: Repository.to.ndk,
-                  enablePubkeyLogin: false,
-                  onLoggedIn: () {
-                    Get.offNamed(AppRoutes.todo);
-                  },
-                ),
-              ],
-            ),
+          constraints: BoxConstraints(maxWidth: 600),
+          child: NUserProfile(
+            ndk: Repository.to.ndk,
+            onLogout: () {
+              Get.offAllNamed(AppRoutes.signIn);
+            },
           ),
         ),
       ),

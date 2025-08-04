@@ -8,6 +8,7 @@ import 'package:donow/repository.dart';
 import 'package:donow/screens/new_todo/new_todo_page.dart';
 import 'package:donow/screens/sign_in/sign_in_page.dart';
 import 'package:donow/screens/todo/todo_page.dart';
+import 'package:donow/screens/user/user_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,6 +19,7 @@ import 'package:system_theme/system_theme.dart';
 import 'package:sembast_cache_manager/sembast_cache_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'l10n/app_localizations.dart';
+import 'package:nostr_widgets/l10n/app_localizations.dart' as nostr_widgets;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -95,6 +97,7 @@ class MainApp extends StatelessWidget {
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
+            nostr_widgets.AppLocalizations.delegate,
           ],
           supportedLocales: [
             Locale('en'),
@@ -113,6 +116,11 @@ class MainApp extends StatelessWidget {
               name: AppRoutes.newTodo,
               middlewares: [RouterIsLoggedInMiddleware()],
               page: () => NewTodoPage(),
+            ),
+            GetPage(
+              name: AppRoutes.user,
+              middlewares: [RouterIsLoggedInMiddleware()],
+              page: () => UserPage(),
             ),
           ],
         );

@@ -4,6 +4,7 @@ import 'package:donow/repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nostr_widgets/nostr_widgets.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:donow/l10n/app_localizations.dart';
 
@@ -21,12 +22,9 @@ class TodoPage extends StatelessWidget {
           child: AppBar(
             title: Text(AppLocalizations.of(context)!.appTitle),
             actions: [
-              IconButton(
-                onPressed: () {
-                  Repository.to.logOut();
-                },
-                icon: Icon(Icons.logout),
-              ),
+              GestureDetector(onTap: () {
+                Get.toNamed(AppRoutes.user);
+              },child: NPicture(ndk: Repository.to.ndk)),
               SizedBox(width: 8),
               if (!kIsWeb && GetPlatform.isDesktop)
                 SizedBox(
