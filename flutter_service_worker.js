@@ -3,16 +3,17 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "0b0a3415aad49b6e9bf965ff578614f9",
+const RESOURCES = {"assets/AssetManifest.bin": "45e99bed9c27367c78d95344df16a399",
 "assets/shaders/ink_sparkle.frag": "ecc85a2e95f5e9f53123dcaf8cb9b6ce",
-"assets/FontManifest.json": "7b2a36307916a9721811788013e65289",
-"assets/AssetManifest.json": "99914b932bd37a50b983c5e7c90ae93b",
-"assets/fonts/MaterialIcons-Regular.otf": "693f9b5d2af56f343486ca0aef32336c",
-"assets/AssetManifest.bin.json": "a1fee2517bf598633e2f67fcf3e26c94",
-"assets/NOTICES": "b3c5187abfb2e36d03d9f87fef497b1d",
-"version.json": "764e39970f0b7da0d0e2dfc7dc48e6f7",
+"assets/FontManifest.json": "578fa61108a9a871931214344b9060a7",
+"assets/AssetManifest.json": "aeed325c525b397deb26e79a2a9c3777",
+"assets/fonts/MaterialIcons-Regular.otf": "9416be96e4435460be983e518cf70fc7",
+"assets/AssetManifest.bin.json": "21ac7656525f0ba3020f78345e498b04",
+"assets/NOTICES": "b03414dbbd07e9d26b0f7281f80d69b5",
+"assets/packages/iconsax_flutter/fonts/FlutterIconsax.ttf": "6ebc7bc5b74956596611c6774d8beb5b",
+"version.json": "41e76d02991529877534462035f9b843",
 "manifest.json": "b7c1e8af08cd4f8f22148ce2de387ba2",
-"flutter_bootstrap.js": "e8fabadbe4c0ada89c8bcf515603eadc",
+"flutter_bootstrap.js": "5176afb3eaeaa1c8197318a2ab4cba2b",
 "canvaskit/skwasm.wasm": "39dd80367a4e71582d234948adc521c0",
 "canvaskit/canvaskit.wasm": "7a3f4ae7d65fc1de6a6e7ddd3224bc93",
 "canvaskit/skwasm.js.symbols": "e72c79950c8a8483d826a7f0560573a1",
@@ -33,7 +34,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "0b0a3415aad49b6e9bf965ff578614f9
 "icons/icon-512-maskable.png": "b5d3553f9ee6923fd7031769f45d7216",
 "icons/icon-192.png": "4733f4878ca5615006311512e3220812",
 "sqlite3.wasm": "19f93db1ac9fb159284ad0a80bfa86f8",
-"main.dart.js": "c0711745fac8ddbeb3b2feef78411b79"};
+"main.dart.js": "5cc604aad6c2f90fae6b2c856a1d5469"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
