@@ -22,5 +22,9 @@
     "todosCopiedToClipboard": "Tâches copiées dans le presse-papiers",
     "failedToCopy": "Échec de la copie",
     "todosDownloadedSuccessfully": "Tâches téléchargées avec succès",
-    "failedToDownload": "Échec du téléchargement"
+    "failedToDownload": "Échec du téléchargement",
+    "clearAll": "Tout effacer",
+    "deleteAllCompleted": "Supprimer toutes les terminées",
+    "deleteAllCompletedConfirmation": "Êtes-vous sûr de vouloir supprimer toutes les tâches terminées ? Cette action ne peut pas être annulée.",
+    "cancel": "Annuler"
 }

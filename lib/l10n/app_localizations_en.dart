@@ -76,4 +76,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get failedToDownload => 'Failed to download';
+
+  @override
+  String get clearAll => 'Clear All';
+
+  @override
+  String get deleteAllCompleted => 'Delete All Completed';
+
+  @override
+  String get deleteAllCompletedConfirmation =>
+      'Are you sure you want to delete all completed todos? This action cannot be undone.';
+
+  @override
+  String get cancel => 'Cancel';
 }

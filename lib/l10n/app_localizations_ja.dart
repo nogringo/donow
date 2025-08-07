@@ -76,4 +76,17 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get failedToDownload => 'ダウンロードに失敗しました';
+
+  @override
+  String get clearAll => 'すべてクリア';
+
+  @override
+  String get deleteAllCompleted => '完了したタスクをすべて削除';
+
+  @override
+  String get deleteAllCompletedConfirmation =>
+      '完了したタスクをすべて削除してもよろしいですか？この操作は元に戻せません。';
+
+  @override
+  String get cancel => 'キャンセル';
 }

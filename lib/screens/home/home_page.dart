@@ -23,6 +23,32 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   TodoView _selectedView = TodoView.active;
 
+  void _deleteAllCompleted(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(AppLocalizations.of(context)!.deleteAllCompleted),
+        content: Text(AppLocalizations.of(context)!.deleteAllCompletedConfirmation),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text(AppLocalizations.of(context)!.cancel),
+          ),
+          TextButton(
+            onPressed: () {
+              Repository.to.deleteAllCompletedTodos();
+              Navigator.pop(context);
+            },
+            style: TextButton.styleFrom(
+              foregroundColor: Theme.of(context).colorScheme.error,
+            ),
+            child: Text(AppLocalizations.of(context)!.delete),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,26 +82,41 @@ class _HomePageState extends State<HomePage> {
         children: [
           Container(
             padding: EdgeInsets.all(8),
-            alignment: Alignment.centerRight,
-            child: SegmentedButton<TodoView>(
-              segments: [
-                ButtonSegment<TodoView>(
-                  value: TodoView.active,
-                  label: Text(AppLocalizations.of(context)!.active),
-                  icon: Icon(Icons.circle, color: Colors.transparent),
-                ),
-                ButtonSegment<TodoView>(
-                  value: TodoView.completed,
-                  label: Text(AppLocalizations.of(context)!.completed),
-                  icon: Icon(Icons.circle, color: Colors.transparent),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                if (_selectedView == TodoView.completed)
+                  TextButton.icon(
+                    onPressed: () => _deleteAllCompleted(context),
+                    icon: Icon(Icons.delete_sweep),
+                    label: Text(AppLocalizations.of(context)!.clearAll),
+                    style: TextButton.styleFrom(
+                      foregroundColor: Theme.of(context).colorScheme.error,
+                    ),
+                  )
+                else
+                  SizedBox.shrink(),
+                SegmentedButton<TodoView>(
+                  segments: [
+                    ButtonSegment<TodoView>(
+                      value: TodoView.active,
+                      label: Text(AppLocalizations.of(context)!.active),
+                      icon: Icon(Icons.circle, color: Colors.transparent),
+                    ),
+                    ButtonSegment<TodoView>(
+                      value: TodoView.completed,
+                      label: Text(AppLocalizations.of(context)!.completed),
+                      icon: Icon(Icons.circle, color: Colors.transparent),
+                    ),
+                  ],
+                  selected: {_selectedView},
+                  onSelectionChanged: (Set<TodoView> newSelection) {
+                    setState(() {
+                      _selectedView = newSelection.first;
+                    });
+                  },
                 ),
               ],
-              selected: {_selectedView},
-              onSelectionChanged: (Set<TodoView> newSelection) {
-                setState(() {
-                  _selectedView = newSelection.first;
-                });
-              },
             ),
           ),
           Expanded(

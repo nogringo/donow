@@ -22,5 +22,9 @@
     "todosCopiedToClipboard": "Tareas copiadas al portapapeles",
     "failedToCopy": "Error al copiar",
     "todosDownloadedSuccessfully": "Tareas descargadas exitosamente",
-    "failedToDownload": "Error al descargar"
+    "failedToDownload": "Error al descargar",
+    "clearAll": "Borrar todo",
+    "deleteAllCompleted": "Eliminar todas las completadas",
+    "deleteAllCompletedConfirmation": "¿Estás seguro de que quieres eliminar todas las tareas completadas? Esta acción no se puede deshacer.",
+    "cancel": "Cancelar"
 }

@@ -8,10 +8,6 @@ See [NIP.md](./NIP.md) for the full specification of the todo list protocol.
 
 ## Todo
 
-### Soon
-
-- [ ] Delete every completed Todos at once
-
 ### Later
 
 - [ ] Replace Drift by Sembast

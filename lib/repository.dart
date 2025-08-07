@@ -196,6 +196,35 @@ class Repository extends GetxController {
     }
   }
 
+  Future<void> deleteAllCompletedTodos() async {
+    final todos = await this.todos();
+    final completedTodos = todos.where((todo) => todo.isCompleted).toList();
+    
+    if (completedTodos.isEmpty) return;
+    
+    List<String> eventIdsToDelete = [];
+    
+    // Collect all event IDs (todos and their completion markers)
+    for (var todo in completedTodos) {
+      eventIdsToDelete.add(todo.eventId);
+      eventIdsToDelete.addAll(
+        todoEvents
+            .where((e) => e.kind == 714 && e.getEId() == todo.eventId)
+            .map((e) => e.id),
+      );
+    }
+    
+    // Send a single deletion event with all IDs
+    final deleteEvent = Nip01Event(
+      pubKey: pubkey,
+      kind: 5,
+      tags: eventIdsToDelete.map((id) => ["e", id]).toList(),
+      content: "Bulk delete completed todos",
+    );
+    
+    ndk.broadcast.broadcast(nostrEvent: deleteEvent);
+  }
+
   void logOut() async {
     stopListenTodo();
 

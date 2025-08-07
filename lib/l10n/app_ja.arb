@@ -22,5 +22,9 @@
     "todosCopiedToClipboard": "タスクをクリップボードにコピーしました",
     "failedToCopy": "コピーに失敗しました",
     "todosDownloadedSuccessfully": "タスクを正常にダウンロードしました",
-    "failedToDownload": "ダウンロードに失敗しました"
+    "failedToDownload": "ダウンロードに失敗しました",
+    "clearAll": "すべてクリア",
+    "deleteAllCompleted": "完了したタスクをすべて削除",
+    "deleteAllCompletedConfirmation": "完了したタスクをすべて削除してもよろしいですか？この操作は元に戻せません。",
+    "cancel": "キャンセル"
 }

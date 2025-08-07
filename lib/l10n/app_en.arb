@@ -91,5 +91,21 @@
     "failedToDownload": "Failed to download",
     "@failedToDownload": {
         "description": "Error message when download fails"
+    },
+    "clearAll": "Clear All",
+    "@clearAll": {
+        "description": "Button to delete all completed todos"
+    },
+    "deleteAllCompleted": "Delete All Completed",
+    "@deleteAllCompleted": {
+        "description": "Dialog title for deleting all completed todos"
+    },
+    "deleteAllCompletedConfirmation": "Are you sure you want to delete all completed todos? This action cannot be undone.",
+    "@deleteAllCompletedConfirmation": {
+        "description": "Confirmation message for deleting all completed todos"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Cancel button text"
     }
 }

@@ -76,4 +76,17 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get failedToDownload => 'Error al descargar';
+
+  @override
+  String get clearAll => 'Borrar todo';
+
+  @override
+  String get deleteAllCompleted => 'Eliminar todas las completadas';
+
+  @override
+  String get deleteAllCompletedConfirmation =>
+      '¿Estás seguro de que quieres eliminar todas las tareas completadas? Esta acción no se puede deshacer.';
+
+  @override
+  String get cancel => 'Cancelar';
 }
