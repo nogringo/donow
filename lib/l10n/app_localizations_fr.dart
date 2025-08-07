@@ -46,4 +46,34 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get download => 'Télécharger';
+
+  @override
+  String get active => 'Actives';
+
+  @override
+  String get completed => 'Terminées';
+
+  @override
+  String get noActiveTasks => 'Aucune tâche active';
+
+  @override
+  String get noCompletedTasks => 'Aucune tâche terminée';
+
+  @override
+  String get markAsIncomplete => 'Marquer comme incomplète';
+
+  @override
+  String get exportAsMarkdown => 'Exporter en Markdown';
+
+  @override
+  String get todosCopiedToClipboard => 'Tâches copiées dans le presse-papiers';
+
+  @override
+  String get failedToCopy => 'Échec de la copie';
+
+  @override
+  String get todosDownloadedSuccessfully => 'Tâches téléchargées avec succès';
+
+  @override
+  String get failedToDownload => 'Échec du téléchargement';
 }

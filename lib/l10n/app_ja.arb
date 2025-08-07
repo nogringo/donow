@@ -12,5 +12,15 @@
     "profile": "プロフィール",
     "updateAvailable": "アップデート利用可能",
     "reloadThisPage": "このページを再読み込み",
-    "download": "ダウンロード"
+    "download": "ダウンロード",
+    "active": "アクティブ",
+    "completed": "完了",
+    "noActiveTasks": "アクティブなタスクはありません",
+    "noCompletedTasks": "完了したタスクはまだありません",
+    "markAsIncomplete": "未完了にする",
+    "exportAsMarkdown": "Markdownとしてエクスポート",
+    "todosCopiedToClipboard": "タスクをクリップボードにコピーしました",
+    "failedToCopy": "コピーに失敗しました",
+    "todosDownloadedSuccessfully": "タスクを正常にダウンロードしました",
+    "failedToDownload": "ダウンロードに失敗しました"
 }

@@ -179,6 +179,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Download'**
   String get download;
+
+  /// Label for active todos
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get active;
+
+  /// Label for completed todos
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get completed;
+
+  /// Message shown when there are no active tasks
+  ///
+  /// In en, this message translates to:
+  /// **'No active tasks'**
+  String get noActiveTasks;
+
+  /// Message shown when there are no completed tasks
+  ///
+  /// In en, this message translates to:
+  /// **'No completed tasks yet'**
+  String get noCompletedTasks;
+
+  /// Action to mark a completed task as incomplete
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as incomplete'**
+  String get markAsIncomplete;
+
+  /// Export todos as markdown
+  ///
+  /// In en, this message translates to:
+  /// **'Export as Markdown'**
+  String get exportAsMarkdown;
+
+  /// Success message when todos are copied
+  ///
+  /// In en, this message translates to:
+  /// **'Todos copied to clipboard'**
+  String get todosCopiedToClipboard;
+
+  /// Error message when copy fails
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to copy'**
+  String get failedToCopy;
+
+  /// Success message when todos are downloaded
+  ///
+  /// In en, this message translates to:
+  /// **'Todos downloaded successfully'**
+  String get todosDownloadedSuccessfully;
+
+  /// Error message when download fails
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to download'**
+  String get failedToDownload;
 }
 
 class _AppLocalizationsDelegate

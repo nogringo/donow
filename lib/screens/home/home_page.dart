@@ -61,12 +61,12 @@ class _HomePageState extends State<HomePage> {
               segments: [
                 ButtonSegment<TodoView>(
                   value: TodoView.active,
-                  label: Text('Active'),
+                  label: Text(AppLocalizations.of(context)!.active),
                   icon: Icon(Icons.circle, color: Colors.transparent),
                 ),
                 ButtonSegment<TodoView>(
                   value: TodoView.completed,
-                  label: Text('Completed'),
+                  label: Text(AppLocalizations.of(context)!.completed),
                   icon: Icon(Icons.circle, color: Colors.transparent),
                 ),
               ],
@@ -108,8 +108,8 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(height: 16),
                             Text(
                               _selectedView == TodoView.active
-                                  ? 'No active tasks'
-                                  : 'No completed tasks yet',
+                                  ? AppLocalizations.of(context)!.noActiveTasks
+                                  : AppLocalizations.of(context)!.noCompletedTasks,
                               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                                   ),
@@ -171,7 +171,7 @@ class _HomePageState extends State<HomePage> {
                                           children: [
                                             Icon(Icons.undo),
                                             SizedBox(width: 8),
-                                            Text('Mark as incomplete'),
+                                            Text(AppLocalizations.of(context)!.markAsIncomplete),
                                           ],
                                         ),
                                       ),
@@ -222,7 +222,7 @@ class _HomePageState extends State<HomePage> {
               if (_selectedView == TodoView.completed)
                 ListTile(
                   leading: Icon(Icons.undo),
-                  title: Text('Mark as incomplete'),
+                  title: Text(AppLocalizations.of(context)!.markAsIncomplete),
                   onTap: () {
                     Repository.to.toggleCompleteTodo(todo.eventId);
                     Get.back();
@@ -257,7 +257,7 @@ class _HomePageState extends State<HomePage> {
           value: 'uncomplete',
           child: ListTile(
             leading: Icon(Icons.undo),
-            title: Text('Mark as incomplete'),
+            title: Text(AppLocalizations.of(context)!.markAsIncomplete),
           ),
         ),
       );

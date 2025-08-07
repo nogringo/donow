@@ -46,4 +46,34 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get download => 'ダウンロード';
+
+  @override
+  String get active => 'アクティブ';
+
+  @override
+  String get completed => '完了';
+
+  @override
+  String get noActiveTasks => 'アクティブなタスクはありません';
+
+  @override
+  String get noCompletedTasks => '完了したタスクはまだありません';
+
+  @override
+  String get markAsIncomplete => '未完了にする';
+
+  @override
+  String get exportAsMarkdown => 'Markdownとしてエクスポート';
+
+  @override
+  String get todosCopiedToClipboard => 'タスクをクリップボードにコピーしました';
+
+  @override
+  String get failedToCopy => 'コピーに失敗しました';
+
+  @override
+  String get todosDownloadedSuccessfully => 'タスクを正常にダウンロードしました';
+
+  @override
+  String get failedToDownload => 'ダウンロードに失敗しました';
 }

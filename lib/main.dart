@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:nostr_widgets/functions/functions.dart';
+import 'package:toastification/toastification.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:ndk/ndk.dart';
 import 'package:system_theme/system_theme.dart';
@@ -90,42 +91,44 @@ class MainApp extends StatelessWidget {
           );
         }
 
-        final app = GetMaterialApp(
-          title: appTitle,
-          theme: getTheme(),
-          darkTheme: getTheme(Brightness.dark),
-          themeMode: ThemeMode.system,
-          localizationsDelegates: [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            nostr_widgets.AppLocalizations.delegate,
-          ],
-          supportedLocales: [
-            Locale('en'),
-            Locale('es'),
-            Locale('fr'),
-            Locale('ja'),
-          ],
-          getPages: [
-            GetPage(
-              name: AppRoutes.todo,
-              middlewares: [RouterIsLoggedInMiddleware()],
-              page: () => HomePage(),
-            ),
-            GetPage(name: AppRoutes.signIn, page: () => SignInPage()),
-            GetPage(
-              name: AppRoutes.newTodo,
-              middlewares: [RouterIsLoggedInMiddleware()],
-              page: () => NewTodoPage(),
-            ),
-            GetPage(
-              name: AppRoutes.user,
-              middlewares: [RouterIsLoggedInMiddleware()],
-              page: () => UserPage(),
-            ),
-          ],
+        final app = ToastificationWrapper(
+          child: GetMaterialApp(
+            title: appTitle,
+            theme: getTheme(),
+            darkTheme: getTheme(Brightness.dark),
+            themeMode: ThemeMode.system,
+            localizationsDelegates: [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              nostr_widgets.AppLocalizations.delegate,
+            ],
+            supportedLocales: [
+              Locale('en'),
+              Locale('es'),
+              Locale('fr'),
+              Locale('ja'),
+            ],
+            getPages: [
+              GetPage(
+                name: AppRoutes.todo,
+                middlewares: [RouterIsLoggedInMiddleware()],
+                page: () => HomePage(),
+              ),
+              GetPage(name: AppRoutes.signIn, page: () => SignInPage()),
+              GetPage(
+                name: AppRoutes.newTodo,
+                middlewares: [RouterIsLoggedInMiddleware()],
+                page: () => NewTodoPage(),
+              ),
+              GetPage(
+                name: AppRoutes.user,
+                middlewares: [RouterIsLoggedInMiddleware()],
+                page: () => UserPage(),
+              ),
+            ],
+          ),
         );
 
         if (!kIsWeb && GetPlatform.isDesktop) {

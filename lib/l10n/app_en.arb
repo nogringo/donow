@@ -51,5 +51,45 @@
     "download": "Download",
     "@download": {
         "description": "Button text for downloading an update"
+    },
+    "active": "Active",
+    "@active": {
+        "description": "Label for active todos"
+    },
+    "completed": "Completed",
+    "@completed": {
+        "description": "Label for completed todos"
+    },
+    "noActiveTasks": "No active tasks",
+    "@noActiveTasks": {
+        "description": "Message shown when there are no active tasks"
+    },
+    "noCompletedTasks": "No completed tasks yet",
+    "@noCompletedTasks": {
+        "description": "Message shown when there are no completed tasks"
+    },
+    "markAsIncomplete": "Mark as incomplete",
+    "@markAsIncomplete": {
+        "description": "Action to mark a completed task as incomplete"
+    },
+    "exportAsMarkdown": "Export as Markdown",
+    "@exportAsMarkdown": {
+        "description": "Export todos as markdown"
+    },
+    "todosCopiedToClipboard": "Todos copied to clipboard",
+    "@todosCopiedToClipboard": {
+        "description": "Success message when todos are copied"
+    },
+    "failedToCopy": "Failed to copy",
+    "@failedToCopy": {
+        "description": "Error message when copy fails"
+    },
+    "todosDownloadedSuccessfully": "Todos downloaded successfully",
+    "@todosDownloadedSuccessfully": {
+        "description": "Success message when todos are downloaded"
+    },
+    "failedToDownload": "Failed to download",
+    "@failedToDownload": {
+        "description": "Error message when download fails"
     }
 }

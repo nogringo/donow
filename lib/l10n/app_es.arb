@@ -12,5 +12,15 @@
     "profile": "Perfil",
     "updateAvailable": "Actualización disponible",
     "reloadThisPage": "Recargar esta página",
-    "download": "Descargar"
+    "download": "Descargar",
+    "active": "Activas",
+    "completed": "Completadas",
+    "noActiveTasks": "Sin tareas activas",
+    "noCompletedTasks": "Sin tareas completadas aún",
+    "markAsIncomplete": "Marcar como incompleta",
+    "exportAsMarkdown": "Exportar como Markdown",
+    "todosCopiedToClipboard": "Tareas copiadas al portapapeles",
+    "failedToCopy": "Error al copiar",
+    "todosDownloadedSuccessfully": "Tareas descargadas exitosamente",
+    "failedToDownload": "Error al descargar"
 }
