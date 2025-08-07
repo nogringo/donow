@@ -7,7 +7,7 @@ import 'package:donow/no_event_verifier.dart';
 import 'package:donow/repository.dart';
 import 'package:donow/screens/new_todo/new_todo_page.dart';
 import 'package:donow/screens/sign_in/sign_in_page.dart';
-import 'package:donow/screens/todo/todo_page.dart';
+import 'package:donow/screens/home/home_page.dart';
 import 'package:donow/screens/user/user_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -112,7 +112,7 @@ class MainApp extends StatelessWidget {
             GetPage(
               name: AppRoutes.todo,
               middlewares: [RouterIsLoggedInMiddleware()],
-              page: () => TodoPage(),
+              page: () => HomePage(),
             ),
             GetPage(name: AppRoutes.signIn, page: () => SignInPage()),
             GetPage(
