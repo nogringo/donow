@@ -35,12 +35,22 @@ void main() async {
 
   // Database initialization moved to Repository.loadApp()
 
+  // For Android: use 10.0.2.2 for emulator or your machine's IP for physical device
+  // For other platforms: use localhost
+  String getDebugRelayUrl() {
+    if (GetPlatform.isAndroid) {
+      // Use 10.0.2.2 for Android emulator, or replace with your machine's IP
+      return 'ws://10.0.2.2:7777';
+    }
+    return 'ws://localhost:7777';
+  }
+
   final ndk = Ndk(
     NdkConfig(
       eventVerifier: NoEventVerifier(),
       cache: SembastCacheManager(await getDatabase()),
       bootstrapRelays: kDebugMode
-          ? ['ws://localhost:7777']
+          ? [getDebugRelayUrl()]
           : DEFAULT_BOOTSTRAP_RELAYS,
     ),
   );

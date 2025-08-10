@@ -1,6 +1,6 @@
 import 'package:donow/app_routes.dart';
 import 'package:donow/l10n/app_localizations.dart';
-import 'package:donow/models/todo.dart';
+import 'package:nostr_todo_sdk/nostr_todo_sdk.dart';
 import 'package:donow/repository.dart';
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';

@@ -1,5 +1,5 @@
 import 'package:donow/app_routes.dart';
-import 'package:donow/models/todo.dart';
+import 'package:nostr_todo_sdk/nostr_todo_sdk.dart';
 import 'package:donow/repository.dart';
 import 'package:donow/widgets/update_indicator_view.dart';
 import 'package:flutter/foundation.dart';
@@ -139,34 +139,18 @@ class _HomePageState extends State<HomePage> {
 
                     if (todos.isEmpty) {
                       return Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              _selectedView == TodoView.active
-                                  ? Icons.task_alt
-                                  : Icons.check_circle_outline,
-                              size: 64,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSurfaceVariant
-                                  .withValues(alpha: 0.5),
-                            ),
-                            SizedBox(height: 16),
-                            Text(
-                              _selectedView == TodoView.active
-                                  ? AppLocalizations.of(context)!.noActiveTasks
-                                  : AppLocalizations.of(
-                                      context,
-                                    )!.noCompletedTasks,
-                              style: Theme.of(context).textTheme.bodyLarge
-                                  ?.copyWith(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.onSurfaceVariant,
-                                  ),
-                            ),
-                          ],
+                        child: Text(
+                          _selectedView == TodoView.active
+                              ? AppLocalizations.of(context)!.noActiveTasks
+                              : AppLocalizations.of(
+                                  context,
+                                )!.noCompletedTasks,
+                          style: Theme.of(context).textTheme.bodyLarge
+                              ?.copyWith(
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.onSurfaceVariant,
+                              ),
                         ),
                       );
                     }
