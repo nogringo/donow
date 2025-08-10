@@ -1,6 +1,12 @@
 # Flutter Apps Builder Configuration
 # This file allows you to customize build metadata
 
+# Application information
+app:
+  # Display name for the application (shown in start menu, launcher, etc.)
+  # If not specified, uses the name from pubspec.yaml
+  display_name: "Donow"
+
 # Package maintainer information
 maintainer:
   name: "Russell"
@@ -25,3 +31,6 @@ build:
 linux:
   # Desktop entry categories
   categories: "Office;Utility;"
+  # Application ID for StartupWMClass (e.g., com.example.myapp)
+  # This should match your Flutter app's application ID
+  app_id: "com.example.donow"

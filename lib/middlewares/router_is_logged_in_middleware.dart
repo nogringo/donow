@@ -9,7 +9,7 @@ class RouterIsLoggedInMiddleware extends GetMiddleware {
     if (Get.find<Ndk>().accounts.isNotLoggedIn) {
       return const RouteSettings(name: AppRoutes.signIn);
     }
-    
+
     return null;
   }
 }

@@ -1,9 +1,7 @@
-import 'dart:convert';
-
-import 'package:donow/database/database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:ndk/ndk.dart';
+import 'package:donow/repository.dart';
 
 class NewTodoController extends GetxController {
   static NewTodoController get to => Get.find();
@@ -31,17 +29,12 @@ class NewTodoController extends GetxController {
       ],
       content: encryptedDescription!,
     );
+    
+    // Store locally first (offline-first)
+    await Repository.to.storeTodoLocally(event, todoDescription);
+    
+    // Then broadcast to network
     ndk.broadcast.broadcast(nostrEvent: event);
-
-    final database = Get.find<AppDatabase>();
-    await database
-        .into(database.decryptedEventItems)
-        .insert(
-          DecryptedEventItemsCompanion.insert(
-            id: event.id,
-            content: jsonEncode({"content": todoDescription}),
-          ),
-        );
 
     Get.back();
   }

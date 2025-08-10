@@ -28,7 +28,9 @@ class _HomePageState extends State<HomePage> {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(AppLocalizations.of(context)!.deleteAllCompleted),
-        content: Text(AppLocalizations.of(context)!.deleteAllCompletedConfirmation),
+        content: Text(
+          AppLocalizations.of(context)!.deleteAllCompletedConfirmation,
+        ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
@@ -128,8 +130,12 @@ class _HomePageState extends State<HomePage> {
                     if (!snapshot.hasData) return Container();
 
                     final todos = _selectedView == TodoView.active
-                        ? snapshot.data!.where((todo) => !todo.isCompleted).toList()
-                        : snapshot.data!.where((todo) => todo.isCompleted).toList();
+                        ? snapshot.data!
+                              .where((todo) => !todo.isCompleted)
+                              .toList()
+                        : snapshot.data!
+                              .where((todo) => todo.isCompleted)
+                              .toList();
 
                     if (todos.isEmpty) {
                       return Center(
@@ -150,9 +156,14 @@ class _HomePageState extends State<HomePage> {
                             Text(
                               _selectedView == TodoView.active
                                   ? AppLocalizations.of(context)!.noActiveTasks
-                                  : AppLocalizations.of(context)!.noCompletedTasks,
-                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                                  : AppLocalizations.of(
+                                      context,
+                                    )!.noCompletedTasks,
+                              style: Theme.of(context).textTheme.bodyLarge
+                                  ?.copyWith(
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.onSurfaceVariant,
                                   ),
                             ),
                           ],
@@ -170,21 +181,26 @@ class _HomePageState extends State<HomePage> {
                             _showBottomSheet(context, todo);
                           },
                           onSecondaryTapDown: (details) {
-                            _showContextMenu(context, details.globalPosition, todo);
+                            _showContextMenu(
+                              context,
+                              details.globalPosition,
+                              todo,
+                            );
                           },
                           child: ListTile(
                             leading: Checkbox(
                               value: todo.isCompleted,
-                              onChanged: (_) =>
-                                  Repository.to.toggleCompleteTodo(todo.eventId),
+                              onChanged: (_) => Repository.to
+                                  .toggleCompleteTodo(todo.eventId),
                             ),
                             title: Text(
                               todo.description,
                               style: _selectedView == TodoView.completed
                                   ? TextStyle(
                                       decoration: TextDecoration.lineThrough,
-                                      color:
-                                          Theme.of(context).colorScheme.onSurfaceVariant,
+                                      color: Theme.of(
+                                        context,
+                                      ).colorScheme.onSurfaceVariant,
                                     )
                                   : null,
                             ),
@@ -200,7 +216,9 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     onSelected: (value) {
                                       if (value == 'uncomplete') {
-                                        Repository.to.toggleCompleteTodo(todo.eventId);
+                                        Repository.to.toggleCompleteTodo(
+                                          todo.eventId,
+                                        );
                                       } else if (value == 'delete') {
                                         Repository.to.deleteTodo(todo.eventId);
                                       }
@@ -212,7 +230,11 @@ class _HomePageState extends State<HomePage> {
                                           children: [
                                             Icon(Icons.undo),
                                             SizedBox(width: 8),
-                                            Text(AppLocalizations.of(context)!.markAsIncomplete),
+                                            Text(
+                                              AppLocalizations.of(
+                                                context,
+                                              )!.markAsIncomplete,
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -222,7 +244,11 @@ class _HomePageState extends State<HomePage> {
                                           children: [
                                             Icon(Icons.delete_outlined),
                                             SizedBox(width: 8),
-                                            Text(AppLocalizations.of(context)!.delete),
+                                            Text(
+                                              AppLocalizations.of(
+                                                context,
+                                              )!.delete,
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -291,7 +317,7 @@ class _HomePageState extends State<HomePage> {
     Todo todo,
   ) async {
     final items = <PopupMenuEntry<String>>[];
-    
+
     if (_selectedView == TodoView.completed) {
       items.add(
         PopupMenuItem<String>(
@@ -303,7 +329,7 @@ class _HomePageState extends State<HomePage> {
         ),
       );
     }
-    
+
     items.add(
       PopupMenuItem<String>(
         value: 'delete',

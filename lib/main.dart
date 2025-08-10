@@ -1,6 +1,5 @@
 import 'package:donow/app_routes.dart';
 import 'package:donow/config.dart';
-import 'package:donow/database/database.dart';
 import 'package:donow/get_database.dart';
 import 'package:donow/middlewares/router_is_logged_in_middleware.dart';
 import 'package:donow/no_event_verifier.dart';
@@ -13,6 +12,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:ndk/config/bootstrap_relays.dart';
 import 'package:nostr_widgets/functions/functions.dart';
 import 'package:toastification/toastification.dart';
 import 'package:window_manager/window_manager.dart';
@@ -33,12 +33,15 @@ void main() async {
 
   await SystemTheme.accentColor.load();
 
-  Get.put(AppDatabase());
+  // Database initialization moved to Repository.loadApp()
 
   final ndk = Ndk(
     NdkConfig(
       eventVerifier: NoEventVerifier(),
       cache: SembastCacheManager(await getDatabase()),
+      bootstrapRelays: kDebugMode
+          ? ['ws://localhost:7777']
+          : DEFAULT_BOOTSTRAP_RELAYS,
     ),
   );
   Get.put(ndk);

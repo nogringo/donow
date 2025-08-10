@@ -7,8 +7,6 @@ environment:
   sdk: ^3.8.1
 
 dependencies:
-  drift: ^2.27.0
-  drift_flutter: ^0.2.4
   file_saver: ^0.3.1
   flutter:
     sdk: flutter
@@ -38,8 +36,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  drift_dev: ^2.27.0
-  build_runner: ^2.5.0
 
 flutter:
   generate: true
