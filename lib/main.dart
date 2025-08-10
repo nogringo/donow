@@ -66,7 +66,7 @@ class MainApp extends StatelessWidget {
         Color accentColor = supportAccentColor
             ? accent.accent
             : accent.defaultAccentColor;
-        if (kIsWeb) accentColor = const Color(0xFFF81242);
+        if (kIsWeb) accentColor = Colors.teal;
 
         ThemeData getTheme([Brightness? brightness]) {
           brightness = brightness ?? Brightness.light;
