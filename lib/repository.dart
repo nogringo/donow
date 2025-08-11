@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:donow/app_routes.dart';
 import 'package:donow/get_database.dart';
 import 'package:donow/services/update_checker.dart';
@@ -13,6 +14,7 @@ class Repository extends GetxController {
 
   TodoService? _todoService;
   late sembast.Database _database;
+  StreamSubscription<void>? _todoStreamSubscription;
 
   RxBool hasUpdate = false.obs;
 
@@ -25,6 +27,12 @@ class Repository extends GetxController {
 
     // Initialize TodoService
     _todoService = TodoService(ndk: ndk, db: _database);
+
+    // Listen to TodoService stream for changes
+    _todoStreamSubscription = _todoService!.stream.listen((_) {
+      // Trigger UI update when todos change
+      update();
+    });
 
     checkForUpdate();
   }
@@ -54,54 +62,56 @@ class Repository extends GetxController {
       description: description,
       encrypted: true, // Using encryption for privacy
     );
-    update(); // Trigger UI update
+    // No need to manually update - stream handles it
   }
 
   Future<void> completeTodo(String eventId) async {
     if (_todoService == null) return;
     await _todoService!.completeTodo(id: eventId);
-    update(); // Trigger UI update
+    // No need to manually update - stream handles it
   }
 
   Future<void> toggleCompleteTodo(String eventId) async {
     if (_todoService == null) return;
-    
+
     final allTodos = await todos();
     final todo = allTodos.firstWhereOrNull((t) => t.eventId == eventId);
-    
+
     if (todo == null) return;
-    
+
     if (todo.isCompleted) {
       await _todoService!.removeTodoStatus(id: eventId);
     } else {
       await _todoService!.completeTodo(id: eventId);
     }
-    update(); // Trigger UI update
+    // No need to manually update - stream handles it
   }
 
   Future<void> deleteTodo(String eventId) async {
     if (_todoService == null) return;
     await _todoService!.deleteTodo(id: eventId);
-    update(); // Trigger UI update
+    // No need to manually update - stream handles it
   }
 
   Future<void> deleteAllCompletedTodos() async {
     if (_todoService == null) return;
-    
+
     final allTodos = await todos();
     final completedTodoIds = allTodos
         .where((todo) => todo.isCompleted)
         .map((todo) => todo.eventId)
         .toList();
-    
+
     if (completedTodoIds.isNotEmpty) {
       await _todoService!.deleteTodos(ids: completedTodoIds);
-      update(); // Trigger UI update
+      // No need to manually update - stream handles it
     }
   }
 
   void logOut() async {
-    // Stop listening to events
+    // Stop listening to stream and dispose service
+    _todoStreamSubscription?.cancel();
+    _todoStreamSubscription = null;
     _todoService?.dispose();
     _todoService = null;
 
@@ -115,6 +125,7 @@ class Repository extends GetxController {
 
   @override
   void onClose() {
+    _todoStreamSubscription?.cancel();
     _todoService?.dispose();
     super.onClose();
   }

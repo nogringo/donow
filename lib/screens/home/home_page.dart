@@ -142,9 +142,7 @@ class _HomePageState extends State<HomePage> {
                         child: Text(
                           _selectedView == TodoView.active
                               ? AppLocalizations.of(context)!.noActiveTasks
-                              : AppLocalizations.of(
-                                  context,
-                                )!.noCompletedTasks,
+                              : AppLocalizations.of(context)!.noCompletedTasks,
                           style: Theme.of(context).textTheme.bodyLarge
                               ?.copyWith(
                                 color: Theme.of(
