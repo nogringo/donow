@@ -71,6 +71,24 @@ class Repository extends GetxController {
     // No need to manually update - stream handles it
   }
 
+  Future<void> blockTodo(String eventId) async {
+    if (_todoService == null) return;
+    await _todoService!.blockTodo(id: eventId);
+    // No need to manually update - stream handles it
+  }
+
+  Future<void> startTodo(String eventId) async {
+    if (_todoService == null) return;
+    await _todoService!.startTodo(id: eventId);
+    // No need to manually update - stream handles it
+  }
+
+  Future<void> removeTodoStatus(String eventId) async {
+    if (_todoService == null) return;
+    await _todoService!.removeTodoStatus(id: eventId);
+    // No need to manually update - stream handles it
+  }
+
   Future<void> toggleCompleteTodo(String eventId) async {
     if (_todoService == null) return;
 
@@ -79,7 +97,7 @@ class Repository extends GetxController {
 
     if (todo == null) return;
 
-    if (todo.isCompleted) {
+    if (todo.status == TodoStatus.done) {
       await _todoService!.removeTodoStatus(id: eventId);
     } else {
       await _todoService!.completeTodo(id: eventId);
@@ -98,7 +116,7 @@ class Repository extends GetxController {
 
     final allTodos = await todos();
     final completedTodoIds = allTodos
-        .where((todo) => todo.isCompleted)
+        .where((todo) => todo.status == TodoStatus.done)
         .map((todo) => todo.eventId)
         .toList();
 

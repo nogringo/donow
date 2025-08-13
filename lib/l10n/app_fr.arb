@@ -26,5 +26,9 @@
     "clearAll": "Tout effacer",
     "deleteAllCompleted": "Supprimer toutes les terminées",
     "deleteAllCompletedConfirmation": "Êtes-vous sûr de vouloir supprimer toutes les tâches terminées ? Cette action ne peut pas être annulée.",
-    "cancel": "Annuler"
+    "cancel": "Annuler",
+    "blocked": "Bloqué",
+    "noBlockedTasks": "Aucune tâche bloquée",
+    "markAsBlocked": "Marquer comme bloqué",
+    "unblock": "Débloquer"
 }

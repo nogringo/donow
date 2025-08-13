@@ -26,5 +26,9 @@
     "clearAll": "すべてクリア",
     "deleteAllCompleted": "完了したタスクをすべて削除",
     "deleteAllCompletedConfirmation": "完了したタスクをすべて削除してもよろしいですか？この操作は元に戻せません。",
-    "cancel": "キャンセル"
+    "cancel": "キャンセル",
+    "blocked": "ブロック中",
+    "noBlockedTasks": "ブロックされたタスクはありません",
+    "markAsBlocked": "ブロックする",
+    "unblock": "ブロック解除"
 }

@@ -89,4 +89,16 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get cancel => 'キャンセル';
+
+  @override
+  String get blocked => 'ブロック中';
+
+  @override
+  String get noBlockedTasks => 'ブロックされたタスクはありません';
+
+  @override
+  String get markAsBlocked => 'ブロックする';
+
+  @override
+  String get unblock => 'ブロック解除';
 }

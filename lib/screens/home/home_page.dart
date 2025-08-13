@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
               Navigator.pop(context);
             },
             style: TextButton.styleFrom(
-              foregroundColor: Theme.of(context).colorScheme.error,
+              foregroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
             ),
             child: Text(AppLocalizations.of(context)!.delete),
           ),
@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                     icon: Icon(Icons.delete_sweep),
                     label: Text(AppLocalizations.of(context)!.clearAll),
                     style: TextButton.styleFrom(
-                      foregroundColor: Theme.of(context).colorScheme.error,
+                      foregroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   )
                 else
@@ -129,118 +129,303 @@ class _HomePageState extends State<HomePage> {
                   builder: (context, snapshot) {
                     if (!snapshot.hasData) return Container();
 
-                    final todos = _selectedView == TodoView.active
-                        ? snapshot.data!
-                              .where((todo) => !todo.isCompleted)
-                              .toList()
-                        : snapshot.data!
-                              .where((todo) => todo.isCompleted)
-                              .toList();
+                    if (_selectedView == TodoView.completed) {
+                      final completedTodos = snapshot.data!
+                          .where((todo) => todo.status == TodoStatus.done)
+                          .toList();
 
-                    if (todos.isEmpty) {
-                      return Center(
-                        child: Text(
-                          _selectedView == TodoView.active
-                              ? AppLocalizations.of(context)!.noActiveTasks
-                              : AppLocalizations.of(context)!.noCompletedTasks,
-                          style: Theme.of(context).textTheme.bodyLarge
-                              ?.copyWith(
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.onSurfaceVariant,
-                              ),
-                        ),
-                      );
-                    }
-
-                    return ListView.builder(
-                      padding: EdgeInsets.only(bottom: 100),
-                      itemCount: todos.length,
-                      itemBuilder: (context, index) {
-                        final todo = todos[index];
-                        return GestureDetector(
-                          onLongPress: () {
-                            _showBottomSheet(context, todo);
-                          },
-                          onSecondaryTapDown: (details) {
-                            _showContextMenu(
-                              context,
-                              details.globalPosition,
-                              todo,
-                            );
-                          },
-                          child: ListTile(
-                            leading: Checkbox(
-                              value: todo.isCompleted,
-                              onChanged: (_) => Repository.to
-                                  .toggleCompleteTodo(todo.eventId),
-                            ),
-                            title: Text(
-                              todo.description,
-                              style: _selectedView == TodoView.completed
-                                  ? TextStyle(
-                                      decoration: TextDecoration.lineThrough,
-                                      color: Theme.of(
-                                        context,
-                                      ).colorScheme.onSurfaceVariant,
-                                    )
-                                  : null,
-                            ),
-                            trailing: _selectedView == TodoView.completed
-                                ? PopupMenuButton<String>(
-                                    icon: Icon(Icons.more_vert),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16),
-                                      side: BorderSide(
-                                        color: Theme.of(context).dividerColor,
-                                        width: 1,
-                                      ),
-                                    ),
-                                    onSelected: (value) {
-                                      if (value == 'uncomplete') {
-                                        Repository.to.toggleCompleteTodo(
-                                          todo.eventId,
-                                        );
-                                      } else if (value == 'delete') {
-                                        Repository.to.deleteTodo(todo.eventId);
-                                      }
-                                    },
-                                    itemBuilder: (BuildContext context) => [
-                                      PopupMenuItem<String>(
-                                        value: 'uncomplete',
-                                        child: Row(
-                                          children: [
-                                            Icon(Icons.undo),
-                                            SizedBox(width: 8),
-                                            Text(
-                                              AppLocalizations.of(
-                                                context,
-                                              )!.markAsIncomplete,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      PopupMenuItem<String>(
-                                        value: 'delete',
-                                        child: Row(
-                                          children: [
-                                            Icon(Icons.delete_outlined),
-                                            SizedBox(width: 8),
-                                            Text(
-                                              AppLocalizations.of(
-                                                context,
-                                              )!.delete,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                : null,
+                      if (completedTodos.isEmpty) {
+                        return Center(
+                          child: Text(
+                            AppLocalizations.of(context)!.noCompletedTasks,
+                            style: Theme.of(context).textTheme.bodyLarge
+                                ?.copyWith(
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurfaceVariant,
+                                ),
                           ),
                         );
-                      },
-                    );
+                      }
+
+                      return ListView.builder(
+                        padding: EdgeInsets.only(bottom: 100),
+                        itemCount: completedTodos.length,
+                        itemBuilder: (context, index) {
+                          final todo = completedTodos[index];
+                          return GestureDetector(
+                            onLongPress: () {
+                              _showBottomSheet(context, todo);
+                            },
+                            onSecondaryTapDown: (details) {
+                              _showContextMenu(
+                                context,
+                                details.globalPosition,
+                                todo,
+                              );
+                            },
+                            child: ListTile(
+                              leading: Checkbox(
+                                value: todo.status == TodoStatus.done,
+                                onChanged: (_) => Repository.to
+                                    .toggleCompleteTodo(todo.eventId),
+                              ),
+                              title: Text(
+                                todo.description,
+                                style: TextStyle(
+                                  decoration: TextDecoration.lineThrough,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurfaceVariant,
+                                ),
+                              ),
+                              trailing: PopupMenuButton<String>(
+                                icon: Icon(Icons.more_vert),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  side: BorderSide(
+                                    color: Theme.of(context).dividerColor,
+                                    width: 1,
+                                  ),
+                                ),
+                                onSelected: (value) {
+                                  if (value == 'uncomplete') {
+                                    Repository.to.toggleCompleteTodo(
+                                      todo.eventId,
+                                    );
+                                  } else if (value == 'delete') {
+                                    Repository.to.deleteTodo(todo.eventId);
+                                  } else if (value == 'block') {
+                                    Repository.to.blockTodo(todo.eventId);
+                                  } else if (value == 'unblock') {
+                                    Repository.to.startTodo(todo.eventId);
+                                  }
+                                },
+                                itemBuilder: (BuildContext context) => [
+                                  PopupMenuItem<String>(
+                                    value: 'uncomplete',
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.undo),
+                                        SizedBox(width: 8),
+                                        Text(
+                                          AppLocalizations.of(
+                                            context,
+                                          )!.markAsIncomplete,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  PopupMenuItem<String>(
+                                    value: 'delete',
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.delete_outlined),
+                                        SizedBox(width: 8),
+                                        Text(
+                                          AppLocalizations.of(context)!.delete,
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    } else {
+                      // Active view - show active and blocked todos
+                      final activeTodos = snapshot.data!
+                          .where(
+                            (todo) =>
+                                todo.status == TodoStatus.pending ||
+                                todo.status == TodoStatus.doing,
+                          )
+                          .toList();
+                      final blockedTodos = snapshot.data!
+                          .where((todo) => todo.status == TodoStatus.blocked)
+                          .toList();
+
+                      if (activeTodos.isEmpty && blockedTodos.isEmpty) {
+                        return Center(
+                          child: Text(
+                            AppLocalizations.of(context)!.noActiveTasks,
+                            style: Theme.of(context).textTheme.bodyLarge
+                                ?.copyWith(
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurfaceVariant,
+                                ),
+                          ),
+                        );
+                      }
+
+                      // Combine todos with a separator
+                      final allItems = <dynamic>[];
+                      allItems.addAll(activeTodos);
+                      if (activeTodos.isNotEmpty && blockedTodos.isNotEmpty) {
+                        allItems.add('separator');
+                      }
+                      allItems.addAll(blockedTodos);
+
+                      return ListView.builder(
+                        padding: EdgeInsets.only(bottom: 100),
+                        itemCount: allItems.length,
+                        itemBuilder: (context, index) {
+                          final item = allItems[index];
+
+                          if (item == 'separator') {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 8.0,
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(child: Divider()),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16.0,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.block,
+                                          size: 16,
+                                          color: Theme.of(
+                                            context,
+                                          ).colorScheme.onSurfaceVariant,
+                                        ),
+                                        SizedBox(width: 8),
+                                        Text(
+                                          AppLocalizations.of(context)!.blocked,
+                                          style: TextStyle(
+                                            color: Theme.of(
+                                              context,
+                                            ).colorScheme.onSurfaceVariant,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(child: Divider()),
+                                ],
+                              ),
+                            );
+                          }
+
+                          final todo = item as Todo;
+                          final isBlocked = todo.status == TodoStatus.blocked;
+
+                          return GestureDetector(
+                            onLongPress: () {
+                              _showBottomSheet(context, todo);
+                            },
+                            onSecondaryTapDown: (details) {
+                              _showContextMenu(
+                                context,
+                                details.globalPosition,
+                                todo,
+                              );
+                            },
+                            child: ListTile(
+                              leading: isBlocked
+                                  ? Checkbox(
+                                      value: null,
+                                      tristate: true,
+                                      onChanged: (_) => Repository.to
+                                          .removeTodoStatus(todo.eventId),
+                                    )
+                                  : Checkbox(
+                                      value: todo.status == TodoStatus.done,
+                                      onChanged: (_) => Repository.to
+                                          .toggleCompleteTodo(todo.eventId),
+                                    ),
+                              title: Text(
+                                todo.description,
+                                style: isBlocked
+                                    ? TextStyle(
+                                        color: Theme.of(
+                                          context,
+                                        ).colorScheme.onSurfaceVariant,
+                                      )
+                                    : null,
+                              ),
+                              trailing: PopupMenuButton<String>(
+                                icon: Icon(Icons.more_vert),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                  side: BorderSide(
+                                    color: Theme.of(context).dividerColor,
+                                    width: 1,
+                                  ),
+                                ),
+                                onSelected: (value) {
+                                  if (value == 'block') {
+                                    Repository.to.blockTodo(todo.eventId);
+                                  } else if (value == 'unblock') {
+                                    Repository.to.startTodo(todo.eventId);
+                                  } else if (value == 'delete') {
+                                    Repository.to.deleteTodo(todo.eventId);
+                                  }
+                                },
+                                itemBuilder: (BuildContext context) {
+                                  final items = <PopupMenuItem<String>>[];
+
+                                  if (isBlocked) {
+                                    items.add(
+                                      PopupMenuItem<String>(
+                                        value: 'unblock',
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.play_arrow),
+                                            SizedBox(width: 8),
+                                            Text(AppLocalizations.of(context)!.unblock),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  } else {
+                                    items.add(
+                                      PopupMenuItem<String>(
+                                        value: 'block',
+                                        child: Row(
+                                          children: [
+                                            Icon(Icons.block),
+                                            SizedBox(width: 8),
+                                            Text(AppLocalizations.of(context)!.markAsBlocked),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  }
+
+                                  items.add(
+                                    PopupMenuItem<String>(
+                                      value: 'delete',
+                                      child: Row(
+                                        children: [
+                                          Icon(Icons.delete_outlined),
+                                          SizedBox(width: 8),
+                                          Text(
+                                            AppLocalizations.of(
+                                              context,
+                                            )!.delete,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+
+                                  return items;
+                                },
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    }
                   },
                 );
               },
@@ -268,6 +453,25 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              if (_selectedView == TodoView.active)
+                if (todo.status == TodoStatus.blocked)
+                  ListTile(
+                    leading: Icon(Icons.play_arrow),
+                    title: Text(AppLocalizations.of(context)!.unblock),
+                    onTap: () {
+                      Repository.to.startTodo(todo.eventId);
+                      Get.back();
+                    },
+                  )
+                else
+                  ListTile(
+                    leading: Icon(Icons.block),
+                    title: Text(AppLocalizations.of(context)!.markAsBlocked),
+                    onTap: () {
+                      Repository.to.blockTodo(todo.eventId);
+                      Get.back();
+                    },
+                  ),
               if (_selectedView == TodoView.completed)
                 ListTile(
                   leading: Icon(Icons.undo),
@@ -300,7 +504,29 @@ class _HomePageState extends State<HomePage> {
   ) async {
     final items = <PopupMenuEntry<String>>[];
 
-    if (_selectedView == TodoView.completed) {
+    if (_selectedView == TodoView.active) {
+      if (todo.status == TodoStatus.blocked) {
+        items.add(
+          PopupMenuItem<String>(
+            value: 'unblock',
+            child: ListTile(
+              leading: Icon(Icons.play_arrow),
+              title: Text(AppLocalizations.of(context)!.unblock),
+            ),
+          ),
+        );
+      } else {
+        items.add(
+          PopupMenuItem<String>(
+            value: 'block',
+            child: ListTile(
+              leading: Icon(Icons.block),
+              title: Text(AppLocalizations.of(context)!.markAsBlocked),
+            ),
+          ),
+        );
+      }
+    } else if (_selectedView == TodoView.completed) {
       items.add(
         PopupMenuItem<String>(
           value: 'uncomplete',
@@ -338,6 +564,10 @@ class _HomePageState extends State<HomePage> {
       Repository.to.toggleCompleteTodo(todo.eventId);
     } else if (value == 'delete') {
       Repository.to.deleteTodo(todo.eventId);
+    } else if (value == 'block') {
+      Repository.to.blockTodo(todo.eventId);
+    } else if (value == 'unblock') {
+      Repository.to.startTodo(todo.eventId);
     }
   }
 }

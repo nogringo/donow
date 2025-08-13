@@ -417,10 +417,10 @@ packages:
     dependency: "direct main"
     description:
       name: nostr_todo_sdk
-      sha256: "37436ce5e029c5bde61b821cf26ec74e2bc0fe9ed76d81d6b571b4b43e50314f"
+      sha256: "9a565b00f9376b955882981a5a95bde447fc279aa995a05c86ebfa8fd3f1edcb"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.1.0"
   nostr_widgets:
     dependency: "direct main"
     description:

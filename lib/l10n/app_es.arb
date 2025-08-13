@@ -26,5 +26,9 @@
     "clearAll": "Borrar todo",
     "deleteAllCompleted": "Eliminar todas las completadas",
     "deleteAllCompletedConfirmation": "¿Estás seguro de que quieres eliminar todas las tareas completadas? Esta acción no se puede deshacer.",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "blocked": "Bloqueado",
+    "noBlockedTasks": "No hay tareas bloqueadas",
+    "markAsBlocked": "Marcar como bloqueado",
+    "unblock": "Desbloquear"
 }

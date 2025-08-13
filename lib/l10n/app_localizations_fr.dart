@@ -89,4 +89,16 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get cancel => 'Annuler';
+
+  @override
+  String get blocked => 'Bloqué';
+
+  @override
+  String get noBlockedTasks => 'Aucune tâche bloquée';
+
+  @override
+  String get markAsBlocked => 'Marquer comme bloqué';
+
+  @override
+  String get unblock => 'Débloquer';
 }

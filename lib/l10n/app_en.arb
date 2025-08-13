@@ -107,5 +107,21 @@
     "cancel": "Cancel",
     "@cancel": {
         "description": "Cancel button text"
+    },
+    "blocked": "Blocked",
+    "@blocked": {
+        "description": "Label for blocked todos"
+    },
+    "noBlockedTasks": "No blocked tasks",
+    "@noBlockedTasks": {
+        "description": "Message shown when there are no blocked tasks"
+    },
+    "markAsBlocked": "Mark as blocked",
+    "@markAsBlocked": {
+        "description": "Action to mark a task as blocked"
+    },
+    "unblock": "Unblock",
+    "@unblock": {
+        "description": "Action to unblock a task"
     }
 }

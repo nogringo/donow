@@ -263,6 +263,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cancel'**
   String get cancel;
+
+  /// Label for blocked todos
+  ///
+  /// In en, this message translates to:
+  /// **'Blocked'**
+  String get blocked;
+
+  /// Message shown when there are no blocked tasks
+  ///
+  /// In en, this message translates to:
+  /// **'No blocked tasks'**
+  String get noBlockedTasks;
+
+  /// Action to mark a task as blocked
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as blocked'**
+  String get markAsBlocked;
+
+  /// Action to unblock a task
+  ///
+  /// In en, this message translates to:
+  /// **'Unblock'**
+  String get unblock;
 }
 
 class _AppLocalizationsDelegate
