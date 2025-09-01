@@ -1,8 +1,10 @@
 import 'package:donow/app_routes.dart';
+import 'package:donow/config.dart';
 import 'package:donow/repository.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ndk/ndk.dart';
 import 'package:nostr_widgets/nostr_widgets.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:donow/l10n/app_localizations.dart';
@@ -46,6 +48,15 @@ class SignInPage extends StatelessWidget {
                 NLogin(
                   ndk: Repository.to.ndk,
                   enablePubkeyLogin: false,
+                  nostrConnect: NostrConnect(
+                    relays: [
+                      "wss://relay.nsec.app",
+                      "wss://theforest.nostr1.com",
+                      "wss://nostr.oxtr.dev",
+                      "wss://relay.primal.net",
+                    ],
+                    appName: appTitle,
+                  ),
                   onLoggedIn: () {
                     Get.offNamed(AppRoutes.todo);
                   },
