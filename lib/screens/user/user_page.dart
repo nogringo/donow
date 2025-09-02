@@ -1,6 +1,5 @@
 import 'package:donow/app_routes.dart';
 import 'package:donow/l10n/app_localizations.dart';
-import 'package:ndk/ndk.dart';
 import 'package:nostr_todo_sdk/nostr_todo_sdk.dart';
 import 'package:donow/repository.dart';
 import 'package:file_saver/file_saver.dart';
@@ -38,69 +37,33 @@ class UserPage extends StatelessWidget {
           ),
         ),
       ),
-      body: Align(
-        alignment: Alignment.topCenter,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 600),
-          child: Column(
-            children: [
-              NUserProfile(
-                ndk: Repository.to.ndk,
-                onLogout: () {
-                  Get.offAllNamed(AppRoutes.signIn);
-                },
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 64),
-                child: ExportTodosButton(),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: UpdateView(),
-              ),
-              SwitchAccountView(),
-              SizedBox(height: kToolbarHeight),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class SwitchAccountView extends StatelessWidget {
-  const SwitchAccountView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text("Switch accounts", style: Theme.of(context).textTheme.titleLarge),
-        SizedBox(height: 16),
-        ...Get.find<Ndk>().accounts.accounts.keys.map(
-          (pubkey) => Card(
-            margin: EdgeInsets.zero,
-            elevation: 0,
-            child: ListTile(
-              leading: NPicture(ndk: Get.find<Ndk>(), pubkey: pubkey),
-              title: NName(ndk: Get.find<Ndk>(), pubkey: pubkey),
-              trailing: Get.find<Ndk>().accounts.getPublicKey() == pubkey
-                  ? Icon(
-                      Icons.radio_button_checked,
-                      color: Theme.of(context).colorScheme.primary,
-                    )
-                  : null,
+      body: SingleChildScrollView(
+        child: Align(
+          alignment: Alignment.topCenter,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 600),
+            child: Column(
+              children: [
+                NUserProfile(
+                  ndk: Repository.to.ndk,
+                  onLogout: () {
+                    Get.offAllNamed(AppRoutes.signIn);
+                  },
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 64),
+                  child: ExportTodosButton(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: UpdateView(),
+                ),
+                SizedBox(height: kToolbarHeight),
+              ],
             ),
           ),
         ),
-        SizedBox(height: 8),
-        TextButton.icon(
-          onPressed: () {},
-          label: Text("Add account"),
-          icon: Icon(Icons.add_circle_outline),
-        ),
-      ],
+      ),
     );
   }
 }

@@ -79,7 +79,13 @@ class _UserDialogContent extends StatelessWidget {
           ),
         ),
         SizedBox(height: 32),
-        OutlinedButton(onPressed: () {}, child: Text("Settings")),
+        OutlinedButton(
+          onPressed: () {
+            Navigator.pop(context);
+            Get.toNamed(AppRoutes.user);
+          },
+          child: Text("Settings"),
+        ),
         SizedBox(height: 8),
         OutlinedButton(
           onPressed: () {
