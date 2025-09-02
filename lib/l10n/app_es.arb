@@ -30,5 +30,10 @@
     "blocked": "Bloqueado",
     "noBlockedTasks": "No hay tareas bloqueadas",
     "markAsBlocked": "Marcar como bloqueado",
-    "unblock": "Desbloquear"
+    "unblock": "Desbloquear",
+    "settings": "Configuración",
+    "switchOrAddAccount": "Cambiar o agregar cuenta",
+    "addAnotherAccount": "Agregar otra cuenta",
+    "signOut": "Cerrar sesión",
+    "switchAccount": "Cambiar cuenta"
 }

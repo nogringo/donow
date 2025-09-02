@@ -123,5 +123,25 @@
     "unblock": "Unblock",
     "@unblock": {
         "description": "Action to unblock a task"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Settings button text"
+    },
+    "switchOrAddAccount": "Switch or add account",
+    "@switchOrAddAccount": {
+        "description": "Button text for switching or adding account when multiple accounts exist"
+    },
+    "addAnotherAccount": "Add another account",
+    "@addAnotherAccount": {
+        "description": "Button text for adding another account"
+    },
+    "signOut": "Sign out",
+    "@signOut": {
+        "description": "Sign out button text"
+    },
+    "switchAccount": "Switch Account",
+    "@switchAccount": {
+        "description": "Switch account page title"
     }
 }

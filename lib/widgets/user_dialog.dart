@@ -1,4 +1,5 @@
 import 'package:donow/app_routes.dart';
+import 'package:donow/l10n/app_localizations.dart';
 import 'package:donow/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -84,7 +85,7 @@ class _UserDialogContent extends StatelessWidget {
             Navigator.pop(context);
             Get.toNamed(AppRoutes.user);
           },
-          child: Text("Settings"),
+          child: Text(AppLocalizations.of(context)!.settings),
         ),
         SizedBox(height: 8),
         OutlinedButton(
@@ -98,8 +99,8 @@ class _UserDialogContent extends StatelessWidget {
           },
           child: Text(
             hasMultipleAccounts
-                ? "Switch or add account"
-                : "Add another account",
+                ? AppLocalizations.of(context)!.switchOrAddAccount
+                : AppLocalizations.of(context)!.addAnotherAccount,
           ),
         ),
         SizedBox(height: 8),
@@ -108,7 +109,7 @@ class _UserDialogContent extends StatelessWidget {
             Navigator.pop(context);
             Repository.to.logOut();
           },
-          child: Text("Sign out"),
+          child: Text(AppLocalizations.of(context)!.signOut),
         ),
       ],
     );

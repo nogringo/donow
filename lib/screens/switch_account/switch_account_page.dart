@@ -1,4 +1,5 @@
 import 'package:donow/app_routes.dart';
+import 'package:donow/l10n/app_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +17,7 @@ class SwitchAccountPage extends StatelessWidget {
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: DragToMoveArea(
           child: AppBar(
-            title: Text('Switch Account'),
+            title: Text(AppLocalizations.of(context)!.switchAccount),
             actions: [
               if (!kIsWeb && GetPlatform.isDesktop)
                 SizedBox(

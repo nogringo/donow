@@ -101,4 +101,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unblock => 'Unblock';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get switchOrAddAccount => 'Switch or add account';
+
+  @override
+  String get addAnotherAccount => 'Add another account';
+
+  @override
+  String get signOut => 'Sign out';
+
+  @override
+  String get switchAccount => 'Switch Account';
 }

@@ -9,6 +9,8 @@ import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
 import 'app_localizations_fr.dart';
 import 'app_localizations_ja.dart';
+import 'app_localizations_ru.dart';
+import 'app_localizations_zh.dart';
 
 // ignore_for_file: type=lint
 
@@ -100,6 +102,8 @@ abstract class AppLocalizations {
     Locale('es'),
     Locale('fr'),
     Locale('ja'),
+    Locale('ru'),
+    Locale('zh'),
   ];
 
   /// The application title
@@ -287,6 +291,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unblock'**
   String get unblock;
+
+  /// Settings button text
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// Button text for switching or adding account when multiple accounts exist
+  ///
+  /// In en, this message translates to:
+  /// **'Switch or add account'**
+  String get switchOrAddAccount;
+
+  /// Button text for adding another account
+  ///
+  /// In en, this message translates to:
+  /// **'Add another account'**
+  String get addAnotherAccount;
+
+  /// Sign out button text
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get signOut;
+
+  /// Switch account page title
+  ///
+  /// In en, this message translates to:
+  /// **'Switch Account'**
+  String get switchAccount;
 }
 
 class _AppLocalizationsDelegate
@@ -299,8 +333,14 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'es', 'fr', 'ja'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>[
+    'en',
+    'es',
+    'fr',
+    'ja',
+    'ru',
+    'zh',
+  ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -317,6 +357,10 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
       return AppLocalizationsFr();
     case 'ja':
       return AppLocalizationsJa();
+    case 'ru':
+      return AppLocalizationsRu();
+    case 'zh':
+      return AppLocalizationsZh();
   }
 
   throw FlutterError(

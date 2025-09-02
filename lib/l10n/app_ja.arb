@@ -30,5 +30,10 @@
     "blocked": "ブロック中",
     "noBlockedTasks": "ブロックされたタスクはありません",
     "markAsBlocked": "ブロックする",
-    "unblock": "ブロック解除"
+    "unblock": "ブロック解除",
+    "settings": "設定",
+    "switchOrAddAccount": "アカウントの切り替えまたは追加",
+    "addAnotherAccount": "別のアカウントを追加",
+    "signOut": "サインアウト",
+    "switchAccount": "アカウント切り替え"
 }

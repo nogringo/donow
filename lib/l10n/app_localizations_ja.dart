@@ -101,4 +101,19 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get unblock => 'ブロック解除';
+
+  @override
+  String get settings => '設定';
+
+  @override
+  String get switchOrAddAccount => 'アカウントの切り替えまたは追加';
+
+  @override
+  String get addAnotherAccount => '別のアカウントを追加';
+
+  @override
+  String get signOut => 'サインアウト';
+
+  @override
+  String get switchAccount => 'アカウント切り替え';
 }
