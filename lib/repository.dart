@@ -12,6 +12,7 @@ import 'package:sembast/sembast.dart' as sembast;
 class Repository extends GetxController {
   static Repository get to => Get.find();
 
+  bool isAppLoaded = false;
   TodoService? _todoService;
   late sembast.Database _database;
   StreamSubscription<void>? _todoStreamSubscription;
@@ -22,6 +23,9 @@ class Repository extends GetxController {
   String? get pubkey => ndk.accounts.getPublicKey();
 
   Future<void> loadApp() async {
+    if (isAppLoaded) return;
+    isAppLoaded = true;
+
     // Initialize database
     await initDatabase();
 
@@ -138,7 +142,15 @@ class Repository extends GetxController {
     await FlutterSecureStorage().delete(key: "loginWith");
     ndk.accounts.logout();
 
-    Get.offAllNamed(AppRoutes.signIn);
+    // Check if there are other accounts before logging out
+    final hasOtherAccounts = ndk.accounts.accounts.length > 1;
+
+    // Navigate based on whether there are other accounts
+    if (hasOtherAccounts) {
+      Get.offAllNamed(AppRoutes.switchAccount);
+    } else {
+      Get.offAllNamed(AppRoutes.signIn);
+    }
   }
 
   @override

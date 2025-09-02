@@ -1,5 +1,5 @@
-import 'package:donow/app_routes.dart';
 import 'package:donow/repository.dart';
+import 'package:donow/widgets/user_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,7 @@ class UpdateIndicatorView extends StatelessWidget {
         padding: const EdgeInsets.only(right: 8.0),
         child: IconButton(
           onPressed: () {
-            Get.toNamed(AppRoutes.user);
+            showUserDialog(context);
           },
           icon: Icon(
             Icons.vertical_align_bottom,

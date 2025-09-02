@@ -32,6 +32,7 @@ dependencies:
   url_launcher: ^6.3.2
   window_manager: ^0.5.0
   nostr_todo_sdk: ^1.1.0
+  ndk_rust_verifier: ^0.4.1
 
 dev_dependencies:
   flutter_test:

@@ -2,6 +2,7 @@ import 'package:donow/app_routes.dart';
 import 'package:nostr_todo_sdk/nostr_todo_sdk.dart';
 import 'package:donow/repository.dart';
 import 'package:donow/widgets/update_indicator_view.dart';
+import 'package:donow/widgets/user_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -63,7 +64,7 @@ class _HomePageState extends State<HomePage> {
               UpdateIndicatorView(),
               GestureDetector(
                 onTap: () {
-                  Get.toNamed(AppRoutes.user);
+                  showUserDialog(context);
                 },
                 child: NPicture(ndk: Repository.to.ndk),
               ),
@@ -93,7 +94,9 @@ class _HomePageState extends State<HomePage> {
                     icon: Icon(Icons.delete_sweep),
                     label: Text(AppLocalizations.of(context)!.clearAll),
                     style: TextButton.styleFrom(
-                      foregroundColor: Theme.of(context).colorScheme.onSurfaceVariant,
+                      foregroundColor: Theme.of(
+                        context,
+                      ).colorScheme.onSurfaceVariant,
                     ),
                   )
                 else
@@ -381,7 +384,11 @@ class _HomePageState extends State<HomePage> {
                                           children: [
                                             Icon(Icons.play_arrow),
                                             SizedBox(width: 8),
-                                            Text(AppLocalizations.of(context)!.unblock),
+                                            Text(
+                                              AppLocalizations.of(
+                                                context,
+                                              )!.unblock,
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -394,7 +401,11 @@ class _HomePageState extends State<HomePage> {
                                           children: [
                                             Icon(Icons.block),
                                             SizedBox(width: 8),
-                                            Text(AppLocalizations.of(context)!.markAsBlocked),
+                                            Text(
+                                              AppLocalizations.of(
+                                                context,
+                                              )!.markAsBlocked,
+                                            ),
                                           ],
                                         ),
                                       ),

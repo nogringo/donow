@@ -2,17 +2,18 @@ import 'package:donow/app_routes.dart';
 import 'package:donow/config.dart';
 import 'package:donow/get_database.dart';
 import 'package:donow/middlewares/router_is_logged_in_middleware.dart';
-import 'package:donow/no_event_verifier.dart';
 import 'package:donow/repository.dart';
 import 'package:donow/screens/new_todo/new_todo_page.dart';
 import 'package:donow/screens/sign_in/sign_in_page.dart';
 import 'package:donow/screens/home/home_page.dart';
 import 'package:donow/screens/user/user_page.dart';
+import 'package:donow/screens/switch_account/switch_account_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ndk/config/bootstrap_relays.dart';
+import 'package:ndk_rust_verifier/ndk_rust_verifier.dart';
 import 'package:nostr_widgets/functions/functions.dart';
 import 'package:toastification/toastification.dart';
 import 'package:window_manager/window_manager.dart';
@@ -33,8 +34,6 @@ void main() async {
 
   await SystemTheme.accentColor.load();
 
-  // Database initialization moved to Repository.loadApp()
-
   // For Android: use 10.0.2.2 for emulator or your machine's IP for physical device
   // For other platforms: use localhost
   String getDebugRelayUrl() {
@@ -47,7 +46,7 @@ void main() async {
 
   final ndk = Ndk(
     NdkConfig(
-      eventVerifier: NoEventVerifier(),
+      eventVerifier: RustEventVerifier(),
       cache: SembastCacheManager(await getDatabase()),
       bootstrapRelays: kDebugMode
           ? [getDebugRelayUrl()]
@@ -139,6 +138,10 @@ class MainApp extends StatelessWidget {
                 name: AppRoutes.user,
                 middlewares: [RouterIsLoggedInMiddleware()],
                 page: () => UserPage(),
+              ),
+              GetPage(
+                name: AppRoutes.switchAccount,
+                page: () => SwitchAccountPage(),
               ),
             ],
           ),

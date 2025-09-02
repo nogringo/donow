@@ -3,4 +3,5 @@ class AppRoutes {
   static const signIn = "/sign-in";
   static const newTodo = "/new-todo";
   static const user = "/user";
+  static const switchAccount = "/switch-account";
 }
