@@ -472,17 +472,19 @@ packages:
   nostr_todo_sdk:
     dependency: "direct main"
     description:
-      path: "../nostr_todo_sdk"
-      relative: true
-    source: path
-    version: "1.1.0"
+      name: nostr_todo_sdk
+      sha256: "729d7317c0501083f9e234fb0b44e6cb302c91f42cfca902577b8cc9dde55f57"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
   nostr_widgets:
     dependency: "direct main"
     description:
-      path: "../nostr_widgets"
-      relative: true
-    source: path
-    version: "0.0.4"
+      name: nostr_widgets
+      sha256: b5d1973323a008bfe0dd5f330afbf3e0af1d0926b81b8453b3921d4a34d61c6a
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   package_info_plus:
     dependency: "direct main"
     description:

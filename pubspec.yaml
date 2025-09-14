@@ -20,7 +20,7 @@ dependencies:
   nip01: ^0.3.0+1
   nip07_event_signer: ^1.0.1
   nip19: ^0.2.0
-  nostr_widgets: ^0.0.3
+  nostr_widgets: ^1.0.0
   package_info_plus: ^8.3.0
   path: ^1.9.1
   path_provider: ^2.1.5
@@ -31,7 +31,7 @@ dependencies:
   toastification: ^3.0.3
   url_launcher: ^6.3.2
   window_manager: ^0.5.0
-  nostr_todo_sdk: ^1.1.0
+  nostr_todo_sdk: ^1.1.1
   ndk_rust_verifier: ^0.4.1
 
 dev_dependencies:
