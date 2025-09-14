@@ -38,6 +38,7 @@ class UserPage extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 12),
         child: Align(
           alignment: Alignment.topCenter,
           child: ConstrainedBox(
