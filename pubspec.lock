@@ -481,10 +481,10 @@ packages:
     dependency: "direct main"
     description:
       name: nostr_widgets
-      sha256: b5d1973323a008bfe0dd5f330afbf3e0af1d0926b81b8453b3921d4a34d61c6a
+      sha256: "089d8b9f6572a0ef6f4455b9fa43a14c5e60f196c6dcac490ef1ced5d2b79b52"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   package_info_plus:
     dependency: "direct main"
     description:

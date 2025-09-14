@@ -20,7 +20,7 @@ dependencies:
   nip01: ^0.3.0+1
   nip07_event_signer: ^1.0.1
   nip19: ^0.2.0
-  nostr_widgets: ^1.0.0
+  nostr_widgets: ^1.0.1
   package_info_plus: ^8.3.0
   path: ^1.9.1
   path_provider: ^2.1.5
