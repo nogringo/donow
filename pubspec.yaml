@@ -21,7 +21,7 @@ dependencies:
   nip07_event_signer: ^1.0.1
   nip19: ^0.2.0
   nostr_widgets: ^1.0.1
-  package_info_plus: ^8.3.0
+  package_info_plus: ^9.0.0
   path: ^1.9.1
   path_provider: ^2.1.5
   sembast: ^3.8.5+1
@@ -37,7 +37,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 flutter:
   generate: true
