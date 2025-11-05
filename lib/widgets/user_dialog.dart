@@ -37,7 +37,7 @@ void showUserDialog(BuildContext context) {
           right: 8,
           child: Material(
             elevation: 8,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(32),
             child: Container(
               constraints: BoxConstraints(maxWidth: 320),
               decoration: BoxDecoration(

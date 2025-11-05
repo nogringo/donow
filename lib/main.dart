@@ -12,7 +12,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:ndk/config/bootstrap_relays.dart';
 import 'package:ndk_rust_verifier/ndk_rust_verifier.dart';
 import 'package:nostr_widgets/functions/functions.dart';
 import 'package:toastification/toastification.dart';
@@ -34,23 +33,10 @@ void main() async {
 
   await SystemTheme.accentColor.load();
 
-  // For Android: use 10.0.2.2 for emulator or your machine's IP for physical device
-  // For other platforms: use localhost
-  String getDebugRelayUrl() {
-    if (GetPlatform.isAndroid) {
-      // Use 10.0.2.2 for Android emulator, or replace with your machine's IP
-      return 'ws://10.0.2.2:7777';
-    }
-    return 'ws://localhost:7777';
-  }
-
   final ndk = Ndk(
     NdkConfig(
       eventVerifier: RustEventVerifier(),
       cache: SembastCacheManager(await getDatabase()),
-      bootstrapRelays: kDebugMode
-          ? [getDebugRelayUrl()]
-          : DEFAULT_BOOTSTRAP_RELAYS,
     ),
   );
   Get.put(ndk);
