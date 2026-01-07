@@ -12,11 +12,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:ndk_rust_verifier/ndk_rust_verifier.dart';
 import 'package:nostr_widgets/functions/functions.dart';
 import 'package:toastification/toastification.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:ndk/ndk.dart';
+import 'event_verifier_stub.dart'
+    if (dart.library.io) 'event_verifier_native.dart'
+    if (dart.library.html) 'event_verifier_web.dart';
 import 'package:system_theme/system_theme.dart';
 import 'package:sembast_cache_manager/sembast_cache_manager.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -35,7 +37,7 @@ void main() async {
 
   final ndk = Ndk(
     NdkConfig(
-      eventVerifier: kIsWeb ? Bip340EventVerifier() : RustEventVerifier(),
+      eventVerifier: getEventVerifier(),
       cache: SembastCacheManager(await getDatabase()),
     ),
   );
