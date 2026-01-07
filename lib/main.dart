@@ -35,7 +35,7 @@ void main() async {
 
   final ndk = Ndk(
     NdkConfig(
-      eventVerifier: RustEventVerifier(),
+      eventVerifier: kIsWeb ? Bip340EventVerifier() : RustEventVerifier(),
       cache: SembastCacheManager(await getDatabase()),
     ),
   );
