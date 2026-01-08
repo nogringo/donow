@@ -1,3 +1,3 @@
 # donow
 
-A new Flutter project.
+A Nostr native todo list app.
