@@ -1,0 +1,147 @@
+{
+    "@@locale": "en",
+    "appTitle": "Donow",
+    "@appTitle": {
+        "description": "The application title"
+    },
+    "signInTitle": "Donow sign in",
+    "@signInTitle": {
+        "description": "Title for the sign in page"
+    },
+    "nsecLabel": "Nsec",
+    "@nsecLabel": {
+        "description": "Label for the nsec input field"
+    },
+    "or": "Or",
+    "@or": {
+        "description": "Text separating login options"
+    },
+    "extensionLogin": "Extension login",
+    "@extensionLogin": {
+        "description": "Button text for logging in with browser extension"
+    },
+    "installExtension": "Install extension",
+    "@installExtension": {
+        "description": "Button text for installing the browser extension"
+    },
+    "create": "Create",
+    "@create": {
+        "description": "Button text for creating a new todo"
+    },
+    "whatToDo": "What do you have to do ?",
+    "@whatToDo": {
+        "description": "Placeholder text for the todo input field"
+    },
+    "delete": "Delete",
+    "@delete": {
+        "description": "Button text for deleting a todo"
+    },
+    "profile": "Profile",
+    "@profile": {
+        "description": "User profile page title"
+    },
+    "updateAvailable": "Update available",
+    "@updateAvailable": {
+        "description": "Text shown when an update is available"
+    },
+    "reloadThisPage": "Reload this page",
+    "@reloadThisPage": {
+        "description": "Text shown for web users to reload the page"
+    },
+    "download": "Download",
+    "@download": {
+        "description": "Button text for downloading an update"
+    },
+    "active": "Active",
+    "@active": {
+        "description": "Label for active todos"
+    },
+    "completed": "Completed",
+    "@completed": {
+        "description": "Label for completed todos"
+    },
+    "noActiveTasks": "No active tasks",
+    "@noActiveTasks": {
+        "description": "Message shown when there are no active tasks"
+    },
+    "noCompletedTasks": "No completed tasks yet",
+    "@noCompletedTasks": {
+        "description": "Message shown when there are no completed tasks"
+    },
+    "markAsIncomplete": "Mark as incomplete",
+    "@markAsIncomplete": {
+        "description": "Action to mark a completed task as incomplete"
+    },
+    "exportAsMarkdown": "Export as Markdown",
+    "@exportAsMarkdown": {
+        "description": "Export todos as markdown"
+    },
+    "todosCopiedToClipboard": "Todos copied to clipboard",
+    "@todosCopiedToClipboard": {
+        "description": "Success message when todos are copied"
+    },
+    "failedToCopy": "Failed to copy",
+    "@failedToCopy": {
+        "description": "Error message when copy fails"
+    },
+    "todosDownloadedSuccessfully": "Todos downloaded successfully",
+    "@todosDownloadedSuccessfully": {
+        "description": "Success message when todos are downloaded"
+    },
+    "failedToDownload": "Failed to download",
+    "@failedToDownload": {
+        "description": "Error message when download fails"
+    },
+    "clearAll": "Clear All",
+    "@clearAll": {
+        "description": "Button to delete all completed todos"
+    },
+    "deleteAllCompleted": "Delete All Completed",
+    "@deleteAllCompleted": {
+        "description": "Dialog title for deleting all completed todos"
+    },
+    "deleteAllCompletedConfirmation": "Are you sure you want to delete all completed todos? This action cannot be undone.",
+    "@deleteAllCompletedConfirmation": {
+        "description": "Confirmation message for deleting all completed todos"
+    },
+    "cancel": "Cancel",
+    "@cancel": {
+        "description": "Cancel button text"
+    },
+    "blocked": "Blocked",
+    "@blocked": {
+        "description": "Label for blocked todos"
+    },
+    "noBlockedTasks": "No blocked tasks",
+    "@noBlockedTasks": {
+        "description": "Message shown when there are no blocked tasks"
+    },
+    "markAsBlocked": "Mark as blocked",
+    "@markAsBlocked": {
+        "description": "Action to mark a task as blocked"
+    },
+    "unblock": "Unblock",
+    "@unblock": {
+        "description": "Action to unblock a task"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Settings button text"
+    },
+    "switchOrAddAccount": "Switch or add account",
+    "@switchOrAddAccount": {
+        "description": "Button text for switching or adding account when multiple accounts exist"
+    },
+    "addAnotherAccount": "Add another account",
+    "@addAnotherAccount": {
+        "description": "Button text for adding another account"
+    },
+    "signOut": "Sign out",
+    "@signOut": {
+        "description": "Sign out button text"
+    },
+    "switchAccount": "Switch Account",
+    "@switchAccount": {
+        "description": "Switch account page title"
+    }
+}

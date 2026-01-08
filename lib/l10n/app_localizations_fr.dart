@@ -1,0 +1,119 @@
+// ignore: unused_import
+import 'package:intl/intl.dart' as intl;
+import 'app_localizations.dart';
+
+// ignore_for_file: type=lint
+
+/// The translations for French (`fr`).
+class AppLocalizationsFr extends AppLocalizations {
+  AppLocalizationsFr([String locale = 'fr']) : super(locale);
+
+  @override
+  String get appTitle => 'Donow';
+
+  @override
+  String get signInTitle => 'Connexion à Donow';
+
+  @override
+  String get nsecLabel => 'Nsec';
+
+  @override
+  String get or => 'Ou';
+
+  @override
+  String get extensionLogin => 'Connexion par extension';
+
+  @override
+  String get installExtension => 'Installer l\'extension';
+
+  @override
+  String get create => 'Créer';
+
+  @override
+  String get whatToDo => 'Qu\'avez-vous à faire ?';
+
+  @override
+  String get delete => 'Supprimer';
+
+  @override
+  String get profile => 'Profil';
+
+  @override
+  String get updateAvailable => 'Mise à jour disponible';
+
+  @override
+  String get reloadThisPage => 'Recharger cette page';
+
+  @override
+  String get download => 'Télécharger';
+
+  @override
+  String get active => 'Actives';
+
+  @override
+  String get completed => 'Terminées';
+
+  @override
+  String get noActiveTasks => 'Aucune tâche active';
+
+  @override
+  String get noCompletedTasks => 'Aucune tâche terminée';
+
+  @override
+  String get markAsIncomplete => 'Marquer comme incomplète';
+
+  @override
+  String get exportAsMarkdown => 'Exporter en Markdown';
+
+  @override
+  String get todosCopiedToClipboard => 'Tâches copiées dans le presse-papiers';
+
+  @override
+  String get failedToCopy => 'Échec de la copie';
+
+  @override
+  String get todosDownloadedSuccessfully => 'Tâches téléchargées avec succès';
+
+  @override
+  String get failedToDownload => 'Échec du téléchargement';
+
+  @override
+  String get clearAll => 'Tout effacer';
+
+  @override
+  String get deleteAllCompleted => 'Supprimer toutes les terminées';
+
+  @override
+  String get deleteAllCompletedConfirmation =>
+      'Êtes-vous sûr de vouloir supprimer toutes les tâches terminées ? Cette action ne peut pas être annulée.';
+
+  @override
+  String get cancel => 'Annuler';
+
+  @override
+  String get blocked => 'Bloqué';
+
+  @override
+  String get noBlockedTasks => 'Aucune tâche bloquée';
+
+  @override
+  String get markAsBlocked => 'Marquer comme bloqué';
+
+  @override
+  String get unblock => 'Débloquer';
+
+  @override
+  String get settings => 'Paramètres';
+
+  @override
+  String get switchOrAddAccount => 'Changer ou ajouter un compte';
+
+  @override
+  String get addAnotherAccount => 'Ajouter un autre compte';
+
+  @override
+  String get signOut => 'Déconnexion';
+
+  @override
+  String get switchAccount => 'Changer de compte';
+}
